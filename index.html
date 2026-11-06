@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}</style>
+<title>Elvirest</title>
+<meta name="description" content="Elvirest: işletmeler için otomasyon. Fatura, satış, maliyet, Instagram ve WhatsApp işleri kendiliğinden yürür; siz panelden sonucu görürsünüz.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: koyu lacivert zemin + tek vurgu rengi (bakır). Üstte iddia, sonra sektör kartları, akış, gerçek sonuçlar, teklif, iletişim. */
+:root{
+  --bg:#f5f3ee; --surface:#ffffff; --ink:#14171f; --mut:#5d6370; --line:#e3e0d8;
+  --acc:#c8642f; --accsoft:#f6e4d8; --deep:#14171f; --deepink:#f5f3ee; --ok:#2d7a52;
+  --disp:"Unbounded",ui-sans-serif,system-ui,sans-serif;
+  --body:"Manrope",ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1218; --surface:#171b23; --ink:#eef0f3; --mut:#9aa1ad; --line:#272c36;
+  --acc:#e2824d; --accsoft:#2a1e17; --deep:#1c2029; --deepink:#eef0f3; --ok:#5cc08a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1218; --surface:#171b23; --ink:#eef0f3; --mut:#9aa1ad; --line:#272c36;
+  --acc:#e2824d; --accsoft:#2a1e17; --deep:#1c2029; --deepink:#eef0f3; --ok:#5cc08a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--body)}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+h1,h2,h3{font-family:var(--disp);margin:0;line-height:1.15;text-wrap:balance}
+p{margin:0}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);font-weight:700}
+.mut{color:var(--mut)}
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:-.01em;text-decoration:none}
+.logo span{color:var(--acc)}
+.navlinks{display:flex;gap:20px;align-items:center;font-weight:600;font-size:14px}
+.navlinks a{text-decoration:none;color:var(--mut)}
+.navlinks a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;border:1px solid transparent}
+.btn.pri{background:var(--acc);color:#fff}
+.btn.sec{border-color:var(--line);background:var(--surface)}
+.btn:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+@media (max-width:720px){.navlinks a.hide{display:none}}
+/* hero */
+.hero{padding-block:72px 56px;display:grid;gap:22px}
+.hero h1{font-size:clamp(32px,6vw,58px);font-weight:700;letter-spacing:-.02em;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero .lead{font-size:clamp(17px,2.2vw,20px);color:var(--mut);max-width:58ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--accsoft);color:var(--acc)}
+section{padding-block:56px;border-top:1px solid var(--line)}
+.sh{display:grid;gap:10px;margin-bottom:28px}
+.sh h2{font-size:clamp(24px,3.6vw,36px);font-weight:700}
+.sh p{max-width:60ch}
+/* sectors */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:12px;align-content:start;min-width:0}
+.card h3{font-size:19px;font-weight:600}
+.card .tag{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.card ul{margin:0;padding-left:18px;display:grid;gap:4px;color:var(--mut);font-size:15px}
+.card.soon{border-style:dashed}
+.card .badge{justify-self:start;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--mut)}
+.card .badge.live{border-color:transparent;background:var(--accsoft);color:var(--acc)}
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;counter-reset:f}
+.step{display:grid;gap:8px;padding-top:14px;border-top:2px solid var(--acc)}
+.step::before{counter-increment:f;content:"0" counter(f);font-family:var(--disp);font-weight:700;color:var(--acc);font-size:14px}
+.step h3{font-size:17px;font-weight:600}
+.step p{color:var(--mut);font-size:15px}
+/* results */
+.dark{background:var(--deep);color:var(--deepink);border-radius:20px;padding:clamp(22px,4vw,40px);display:grid;gap:24px}
+.dark .mut{color:color-mix(in srgb,var(--deepink) 65%,transparent)}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:18px}
+.num b{display:block;font-family:var(--disp);font-size:clamp(26px,4vw,36px);font-weight:700;color:var(--acc);font-variant-numeric:tabular-nums}
+.num span{font-size:14px}
+.note{font-size:13px}
+/* offer */
+.offer{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.price{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;display:grid;gap:10px;align-content:start}
+.price.hi{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)}
+.price h3{font-size:18px;font-weight:600}
+.price .big{font-family:var(--disp);font-size:26px;font-weight:700}
+.price ul{margin:0;padding-left:18px;color:var(--mut);font-size:15px;display:grid;gap:4px}
+/* contact */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:24px;align-items:start}
+.cbox{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;display:grid;gap:14px}
+.phone{font-family:var(--disp);font-size:24px;font-weight:700;user-select:all}
+.copy{justify-self:start;cursor:pointer;font:inherit}
+footer{padding-block:32px;border-top:1px solid var(--line);font-size:14px;color:var(--mut);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+@media (prefers-reduced-motion:no-preference){.card,.price{transition:transform .2s}.card:hover,.price:hover{transform:translateY(-2px)}}
+</style>
+
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="logo" href="#ust">elvi<span>rest</span></a>
+  <div class="navlinks">
+    <a class="hide" href="#sektorler">Sektörler</a>
+    <a class="hide" href="#nasil">Nasıl çalışır</a>
+    <a class="hide" href="#teklif">Teklif</a>
+    <a class="btn sec" href="https://blackprens.app.n8n.cloud/webhook/elvirest" target="_blank" rel="noopener">Panel girişi</a>
+  </div>
+</div></nav>
+
+<main class="wrap" id="ust">
+  <header class="hero">
+    <div class="eyebrow">İşletmeler için otomasyon · Ankara</div>
+    <h1>İşletmenizin tekrar eden işleri <em>kendiliğinden</em> yürüsün.</h1>
+    <p class="lead">Fatura, satış raporu, maliyet, stok, Instagram mesajları ve randevular. Elvirest bunları sizin yerinize toplar, hesaplar ve tek bir panelde gösterir. Siz sadece sonuca bakarsınız.</p>
+    <div class="ctas">
+      <a class="btn pri" href="#iletisim">Ücretsiz deneme isteyin</a>
+      <a class="btn sec" href="#sektorler">Hangi sektörler?</a>
+    </div>
+    <div class="chips"><span class="chip">Telegram ile çalışır</span><span class="chip">Instagram & WhatsApp</span><span class="chip">Telefondan panel</span><span class="chip">Kuruluma siz uğraşmazsınız</span></div>
+  </header>
+
+  <section id="sektorler">
+    <div class="sh">
+      <div class="eyebrow">Sektörler</div>
+      <h2>Her işletmeye kendi sistemi</h2>
+      <p class="mut">Hazır paket satmıyoruz. İşletmenizin günlük akışına bakıp tekrar eden işleri otomatiğe bağlıyoruz.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <span class="badge live">Çalışıyor</span>
+        <div class="tag">Restoran · Kafe · Lounge</div>
+        <h3>Maliyet ve kayıp takibi</h3>
+        <ul>
+          <li>Fatura fotoğrafı bota atılır, kalem kalem işlenir</li>
+          <li>Gün sonu (Z) raporu otomatik okunur</li>
+          <li>Her ürünün reçete maliyeti ve kâr marjı</li>
+          <li>İptal, ikram, personel yemeği ve fire takibi</li>
+          <li>Patrona telefondan net kâr paneli</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="badge live">Çalışıyor</span>
+        <div class="tag">Mobilya · E-ticaret · Mağaza</div>
+        <h3>Instagram satış asistanı</h3>
+        <ul>
+          <li>DM ve yorumlara anında, satış odaklı cevap</li>
+          <li>Fiyat soranlara özelden bilgi</li>
+          <li>Telefon numarası alınınca size bildirim</li>
+          <li>Sesli ve görselli mesajları da anlar</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="badge live">Kuruldu</span>
+        <div class="tag">Sağlık turizmi · Klinik</div>
+        <h3>Hasta karşılama ve takip</h3>
+        <ul>
+          <li>Gelen mesajlara 7/24 ilk karşılama</li>
+          <li>Danışmana otomatik atama, 15 dk uyarısı</li>
+          <li>3-5-7 gün takip mesajları</li>
+          <li>Aylık kayıp hasta raporu</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="badge">Hazırlanıyor</span>
+        <div class="tag">Perakende · Kuruyemiş · Butik</div>
+        <h3>Sosyal medya ve satış</h3>
+        <ul>
+          <li>Aylık paylaşım planı ve hazır görseller</li>
+          <li>Onaylı otomatik paylaşım</li>
+          <li>Müşteri sorularına otomatik cevap</li>
+        </ul>
+      </article>
+      <article class="card soon">
+        <span class="badge">Yakında</span>
+        <div class="tag">Emlak · Oto galeri</div>
+        <h3>İlan ve müşteri takibi</h3>
+        <ul>
+          <li>İlan sorularına anında cevap</li>
+          <li>Randevu ve geri arama listesi</li>
+          <li>Sıcak müşteri bildirimi</li>
+        </ul>
+      </article>
+      <article class="card soon">
+        <span class="badge">Size özel</span>
+        <div class="tag">Sektörünüz burada yok mu?</div>
+        <h3>Ne tekrar ediyorsa onu otomatikleştiririz</h3>
+        <ul>
+          <li>Günlük işlerinizi dinleriz</li>
+          <li>En çok zaman alan 2–3 işi seçeriz</li>
+          <li>İlk sonucu bir ay içinde gösteririz</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="nasil">
+    <div class="sh">
+      <div class="eyebrow">Nasıl çalışır</div>
+      <h2>Ekibiniz yeni program öğrenmez</h2>
+      <p class="mut">Zaten kullandığınız araçlarla çalışır: Telegram, Instagram, WhatsApp ve kasa sisteminiz.</p>
+    </div>
+    <div class="flow">
+      <div class="step"><h3>Tanışma</h3><p>İşletmenizin günlük akışını ve en çok vakit kaybettiren işleri konuşuruz.</p></div>
+      <div class="step"><h3>Kurulum</h3><p>Sistemi biz kurarız. Menü, ürünler, fiyatlar gibi mevcut bilgiler sizden bir kez alınır.</p></div>
+      <div class="step"><h3>Günlük kullanım</h3><p>Çalışanınız fotoğraf atar ya da mesaj yazar. Gerisini sistem yapar.</p></div>
+      <div class="step"><h3>Sonuç</h3><p>Telefonunuzdan panele girersiniz: ciro, gider, kâr, kayıp, gelen müşteri.</p></div>
+    </div>
+  </section>
+
+  <section id="sonuc">
+    <div class="dark">
+      <div class="sh" style="margin:0">
+        <div class="eyebrow">Gerçek işletme · ilk ay</div>
+        <h2>Ankara'da bir lounge'da ilk ayda bulunanlar</h2>
+        <p class="mut">Aylık cirosu 7 milyon TL'nin üzerindeki bir işletmede, sistemin ilk tam ayında ortaya çıkanlar.</p>
+      </div>
+      <div class="nums">
+        <div class="num"><b>132.000 TL</b><span>ciroya yazılmayan iptal ürün bazında görünür oldu</span></div>
+        <div class="num"><b>17 fatura</b><span>tek tedarikçide sisteme hiç girmemiş fatura bulundu</span></div>
+        <div class="num"><b>%34</b><span>net kâr oranı kasiyerin hesabıyla kuruşu kuruşuna tuttu</span></div>
+        <div class="num"><b>3 bölüm</b><span>nargile, bar ve mutfak ayrı ayrı: hangisi ne kazandırıyor</span></div>
+      </div>
+      <p class="note mut">Rakamlar müşterimizin izniyle, işletme adı gizlenerek paylaşılmıştır.</p>
+    </div>
+  </section>
+
+  <section id="teklif">
+    <div class="sh">
+      <div class="eyebrow">Teklif</div>
+      <h2>Önce sonuç, sonra ödeme</h2>
+    </div>
+    <div class="offer">
+      <div class="price hi">
+        <h3>İlk ay ücretsiz</h3>
+        <div class="big">0 TL</div>
+        <ul>
+          <li>Kurulum ve ilk ay kullanım bizden</li>
+          <li>Ay sonunda size rapor sunarız</li>
+          <li>İşinize yaramadıysa hiçbir ücret yok</li>
+        </ul>
+      </div>
+      <div class="price">
+        <h3>Aylık abonelik</h3>
+        <div class="big">İşletmeye göre</div>
+        <ul>
+          <li>Panel, otomasyonlar ve bakım dahil</li>
+          <li>Yeni ihtiyaçlarınızı ekleriz</li>
+          <li>Taahhüt yok, istediğiniz ay bırakırsınız</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="iletisim">
+    <div class="contact">
+      <div class="sh" style="margin:0">
+        <div class="eyebrow">İletişim</div>
+        <h2>Ücretsiz deneme için arayın ya da yazın</h2>
+        <p class="mut">İşletmenizin türünü ve en çok vakit kaybettiğiniz işi söyleyin, size uygun kurulumu anlatalım.</p>
+      </div>
+      <div class="cbox">
+        <span class="mut">Telefon / WhatsApp</span>
+        <div class="phone" id="tel">0554 201 00 00</div>
+        <button class="btn sec copy" id="kopyala" type="button">Numarayı kopyala</button>
+        <span class="mut" style="font-size:14px">Ankara · Salih Aydın</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Elvirest</span>
+    <span>elvirest.com</span>
+  </footer>
+</main>
+
+<script>
+document.getElementById('kopyala').addEventListener('click', function () {
+  var b = this, t = document.getElementById('tel').textContent;
+  navigator.clipboard.writeText(t).then(function () { b.textContent = 'Kopyalandı'; }).catch(function () {
+    var r = document.createRange(); r.selectNodeContents(document.getElementById('tel'));
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Seçildi, kopyalayın';
+  });
+});
+</script>
+
+</body>
+</html>
