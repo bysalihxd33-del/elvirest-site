@@ -254,6 +254,53 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .hero.yaz .gok{background:linear-gradient(180deg,#0a0b22 0%,#1d1a4a 55%,#3a2a66 100%)}
 .hero.son .gok{background:linear-gradient(180deg,#0e0b1d 0%,#261a3a 55%,#4a2a4a 100%)}
 .gok{transition:background 2s}
+
+/* referans sahneleri */
+.refs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.refs{grid-template-columns:1fr}}
+.ref{border-radius:24px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:var(--sh);display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .25s}
+.ref:hover{transform:translateY(-5px)}
+.sahne{height:230px;position:relative;overflow:hidden}
+.ref .ic2{padding:22px 24px 26px;display:flex;flex-direction:column;gap:6px;flex:1}
+.ref .tur{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--sun2);font-weight:600}
+.ref h3{font-size:26px;font-weight:800}
+.ref p{font-size:14px;color:var(--ink2);flex:1}
+.ref .git{font-weight:600;font-size:14px;color:var(--sun2)}
+.cip{position:absolute;left:50%;bottom:18px;transform:translate(-50%,20px);opacity:0;background:#fff;color:#222;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);white-space:nowrap;transition:all .6s cubic-bezier(.2,.8,.2,1)}
+.oyna .cip{animation:cipA 5s infinite}
+@keyframes cipA{0%,25%{opacity:0;transform:translate(-50%,20px)}35%,85%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,0)}}
+/* Derin: aynalar */
+.s-derin{background:radial-gradient(120% 90% at 60% 10%,#5a3354,#251a2e 60%,#1a1220)}
+.s-derin .ay3{position:absolute;left:50%;bottom:0;transform:translateX(-50%);display:flex;gap:14px;align-items:flex-end}
+.s-derin .ay3 i{width:58px;height:150px;border-radius:99px 99px 6px 6px;background:linear-gradient(180deg,rgba(255,220,225,.2),rgba(255,220,225,.04));border:1px solid rgba(255,230,232,.25);box-shadow:0 0 30px rgba(255,190,200,.25)}
+.s-derin .ay3 i:nth-child(2){height:180px}
+.oyna .s-derin .ay3 i{animation:isik2 3s ease-in-out infinite}
+.oyna .s-derin .ay3 i:nth-child(2){animation-delay:1s}.oyna .s-derin .ay3 i:nth-child(3){animation-delay:2s}
+@keyframes isik2{50%{box-shadow:0 0 60px 8px rgba(255,190,200,.55);background:linear-gradient(180deg,rgba(255,220,225,.32),rgba(255,220,225,.06))}}
+.s-derin .yz{position:absolute;left:24px;top:22px;font-family:Georgia,serif;font-size:34px;color:#fff}
+.s-derin b.p{position:absolute;width:3px;height:3px;border-radius:50%;background:#ffe7ea;opacity:0}
+.oyna .s-derin b.p{animation:pir2 3s infinite}
+@keyframes pir2{40%{opacity:1}80%{opacity:0}}
+/* Divanza: koltuk çizimi */
+.s-div{background:linear-gradient(160deg,#f6efe6,#eadfce)}
+.s-div svg{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:78%}
+.s-div path{fill:none;stroke:#6b4e3a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:900;stroke-dashoffset:900}
+.oyna .s-div path{animation:ciz 5s ease-in-out infinite}
+@keyframes ciz{0%{stroke-dashoffset:900}45%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:0;opacity:0}}
+.s-div .olcu{position:absolute;left:12%;right:12%;top:16px;display:flex;justify-content:space-between;font-size:11px;color:#8a6d55;border-bottom:1px dashed #b89a80;padding-bottom:3px}
+/* Lounge: duman + fiş */
+.s-lng{background:radial-gradient(100% 80% at 30% 90%,#3a2418,#140d10 70%)}
+.s-lng .duman{position:absolute;left:22%;bottom:30px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.18);filter:blur(10px);opacity:0}
+.oyna .s-lng .duman{animation:tut 4.5s ease-in infinite}
+.oyna .s-lng .duman:nth-child(2){animation-delay:1.5s;left:26%}.oyna .s-lng .duman:nth-child(3){animation-delay:3s;left:19%}
+@keyframes tut{0%{transform:translateY(0) scale(.6);opacity:0}20%{opacity:.7}100%{transform:translate(30px,-190px) scale(2.4);opacity:0}}
+.s-lng .fis{position:absolute;right:18%;top:-130px;width:90px;background:#fffdf6;border-radius:4px;padding:10px 8px;font-size:9px;line-height:1.6;color:#444;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.s-lng .fis b{display:block;font-size:10px;margin-bottom:2px}
+.s-lng .fis em{font-style:normal;color:#d6452c}
+.oyna .s-lng .fis{animation:fis 5s ease-in-out infinite}
+@keyframes fis{0%{top:-130px}35%,85%{top:30px}100%{top:30px;opacity:0}}
+.s-lng .sayi{position:absolute;left:20px;top:20px;color:#ffcf9a;font-family:var(--head);font-weight:800;font-size:22px}
+.s-lng .sayi small{display:block;font-family:var(--body);font-weight:500;font-size:11px;color:rgba(255,255,255,.6)}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -400,6 +447,38 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   </div>
 </section>
 
+
+<section id="referanslar" style="padding-top:20px">
+  <div class="wrap">
+    <div class="bas gel">
+      <div class="eyebrow">Kurduğumuz sistemler</div>
+      <h2>Her işletmenin kendi hikâyesi.</h2>
+      <p class="lead">Ankara'da şu an çalışan üç işletme. Her biri kendi sektörüne göre kuruldu.</p>
+    </div>
+    <div class="refs">
+      <a class="ref gel" href="/derin/">
+        <div class="sahne s-derin"><div class="yz">Derin</div><div class="ay3"><i></i><i></i><i></i></div>
+          <b class="p" style="left:20%;top:40%"></b><b class="p" style="left:78%;top:30%;animation-delay:1s"></b><b class="p" style="left:65%;top:60%;animation-delay:2s"></b><b class="p" style="left:35%;top:25%;animation-delay:1.5s"></b>
+          <div class="cip">✓ Cumartesi 14:00 · ipek kirpik randevusu</div></div>
+        <div class="ic2"><span class="tur">Güzellik merkezi · Etimesgut</span><h3>Derin Güzellik</h3><p>Instagram randevu asistanı, online randevu sitesi, resepsiyona anlık bildirim, kampanyaların kendiliğinden kapanması.</p><span class="git">Siteyi gör →</span></div>
+      </a>
+      <div class="ref gel">
+        <div class="sahne s-div"><div class="olcu"><span>330 cm</span><span>köşe takım</span><span>280 cm</span></div>
+          <svg viewBox="0 0 300 140" aria-hidden="true"><path d="M20 110 V60 Q20 45 35 45 H150 Q165 45 165 60 V75 H265 Q280 75 280 90 V110 M20 110 H280 M20 75 H165 M40 110 V122 M260 110 V122 M60 45 V75 M110 45 V75 M200 75 V110 M240 75 V110"/></svg>
+          <div class="cip">💬 Ölçünüze uygun 3 model · teklif hazır</div></div>
+        <div class="ic2"><span class="tur">Mobilya · Ankara</span><h3>Divanza Home</h3><p>Satış odaklı Instagram DM botu, katalog gönderme, ölçü ve şehir toplama, teklif takibi ve tedarikçi fiyat kontrolü.</p><span class="git" style="color:var(--mut)">Site hazırlanıyor</span></div>
+      </div>
+      <div class="ref gel">
+        <div class="sahne s-lng"><div class="duman"></div><div class="duman"></div><div class="duman"></div>
+          <div class="sayi"><span data-say2="132000">0</span> ₺<small>görünür olan iptal · ilk ay</small></div>
+          <div class="fis"><b>GÜN SONU</b>Satış ............ ✓<br>İkram ........... ✓<br><em>İptal ..... 18 kalem</em><br>Personel ....... ✓</div>
+          <div class="cip">📊 Net kâr %34 · kasiyerle kuruşu kuruşuna</div></div>
+        <div class="ic2"><span class="tur">Lounge · Ankara</span><h3>Bir lounge</h3><p>Fatura fotoğrafından maliyet, gün sonu raporundan iptal ve ikram takibi, patrona net kâr paneli. İşletme adı müşterimizin isteğiyle gizli.</p><span class="git" style="color:var(--mut)">Gerçek rakamlar yukarıda</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="sektorler" style="background:linear-gradient(180deg,var(--cream),#fff1e4)">
   <div class="wrap">
     <div class="bas gel">
@@ -543,7 +622,7 @@ else { adim(); pencere(); setInterval(pencere, 2200); new IntersectionObserver(e
 
 /* görünür olunca */
 const say = el => { const n = +el.dataset.say, son = el.dataset.son || '', on = el.dataset.on || ''; if (az) { el.textContent = on + tl(n) + son; return; } const t0 = performance.now(); const f = t => { const k = Math.min(1, (t - t0) / 1400), e = 1 - Math.pow(1 - k, 3); el.textContent = on + tl(n * e) + son; if (k < 1) requestAnimationFrame(f); }; requestAnimationFrame(f); };
-const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; const t = e.target; t.classList.add('var'); if (t.classList.contains('sorun')) t.classList.add('oyna'); t.querySelectorAll('[data-say]').forEach(say); if (t.querySelector('#iptalSay')) sayIptal(); io.unobserve(t); }), { threshold: .2 });
+const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; const t = e.target; t.classList.add('var'); if (t.classList.contains('sorun')) t.classList.add('oyna'); t.querySelectorAll('[data-say]').forEach(say); if (t.querySelector('#iptalSay')) sayIptal(); if (t.classList.contains('ref')) { t.classList.add('oyna'); t.querySelectorAll('[data-say2]').forEach(el => { el.dataset.say = el.dataset.say2; say(el); }); } io.unobserve(t); }), { threshold: .2 });
 document.querySelectorAll('.gel').forEach(e => io.observe(e));
 function sayIptal(){ const el = $('#iptalSay'); if (az) { el.textContent = tl(132000); return; } const t0 = performance.now(); const f = t => { const k = Math.min(1, (t - t0) / 1800); el.textContent = tl(132000 * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(f); }; requestAnimationFrame(f); }
 
