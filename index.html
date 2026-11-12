@@ -240,6 +240,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .gel.var{opacity:1;transform:none}
 .wa{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 26px -8px rgba(0,0,0,.4);text-decoration:none}
 .wa svg{width:30px;height:30px;fill:#fff}
+
+.mevsim{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.mevsim i{position:absolute;top:-20px;display:block;animation:dus linear infinite}
+.mevsim.kis i{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.85}
+.mevsim.ilk i{width:10px;height:7px;border-radius:70% 0 70% 0;background:#ffb7cf;opacity:.9}
+.mevsim.son i{width:12px;height:9px;border-radius:0 80% 0 80%;background:#e8833a;opacity:.9}
+.mevsim.yaz i{top:auto;bottom:-10px;width:5px;height:5px;border-radius:50%;background:#fff3a0;box-shadow:0 0 10px 3px rgba(255,236,120,.8);animation-name:bocek}
+@keyframes dus{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(30px,55vh) rotate(180deg)}100%{transform:translate(-20px,110vh) rotate(360deg)}}
+@keyframes bocek{0%{transform:translate(0,0);opacity:0}20%{opacity:1}50%{transform:translate(25px,-40vh);opacity:.3}80%{opacity:1}100%{transform:translate(-15px,-80vh);opacity:0}}
+.mevsimAd{display:inline-block;margin-left:6px;opacity:.85}
+.hero.kis .gok{background:linear-gradient(180deg,#081028 0%,#14234d 55%,#2a3a6a 100%)}
+.hero.yaz .gok{background:linear-gradient(180deg,#0a0b22 0%,#1d1a4a 55%,#3a2a66 100%)}
+.hero.son .gok{background:linear-gradient(180deg,#0e0b1d 0%,#261a3a 55%,#4a2a4a 100%)}
+.gok{transition:background 2s}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -267,6 +281,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   <div class="safak"></div>
   <div class="yildiz" id="yildiz"></div>
   <div class="ay"></div>
+  <div class="mevsim" id="mevsim" aria-hidden="true"></div>
   <div class="gunes"></div>
   <div class="sehir" aria-hidden="true">
     <svg viewBox="0 0 1440 260" preserveAspectRatio="xMidYMax slice" id="sehir"></svg>
@@ -486,25 +501,44 @@ const pens = [...svg.querySelectorAll('.pen')];
 
 /* hero hikâyesi */
 const hero = $('#hero'), msj = $('#heroMsj'), saat = $('#saat'), bild = $('#bildirim');
-const SAH = [
-  [800, () => { saat.textContent = 'Saat 02:14 · işletme kapalı'; }],
-  [600, () => bal('m', 'Merhaba, yarın akşam 4 kişilik masa var mı? 🙏', '02:14')],
-  [900, () => yaz(true)],
-  [1300, () => { yaz(false); bal('e', 'İyi geceler! Var, saat 20:00 uygun mu? Adınızı ve telefonunuzu alabilir miyim?', '02:14 · Elvirest'); }],
-  [1500, () => bal('m', 'Elif, 0532 *** ** 33', '02:15')],
-  [900, () => yaz(true)],
-  [1100, () => { yaz(false); bal('e', 'Teşekkürler Elif Hanım, masanız ayrıldı ✓ Sabah ekibimiz teyit için arayacak.', '02:15 · Elvirest'); }],
-  [2000, () => { saat.textContent = 'Saat 07:30 · günaydın'; hero.classList.add('sabah'); }],
-  [5500, () => bild.classList.add('gor')],
-  [2200, () => { bild.classList.remove('gor'); hero.classList.remove('sabah'); msj.innerHTML = ''; }]
+const MEVSIM = [
+  { k: 'kis', ad: 'Kış gecesi', sek: 'restoran', m: [['m','Merhaba, yarın akşam 4 kişilik masa var mı? 🙏','02:14'],['e','İyi geceler! Var, saat 20:00 uygun mu? Adınızı ve telefonunuzu alabilir miyim?','02:14 · Elvirest'],['m','Elif, 0532 *** ** 33','02:15'],['e','Teşekkürler Elif Hanım, masanız ayrıldı ✓ Sabah ekibimiz teyit için arayacak.','02:15 · Elvirest']], b: 'Gece 3 rezervasyon alındı, 1 fatura işlendi.' },
+  { k: 'ilk', ad: 'Bahar gecesi', sek: 'güzellik', m: [['m','İpek kirpik ne kadar? Cumartesi müsait misiniz?','23:48'],['e','İyi akşamlar! Nakit ödemede 1.500 TL 💫 Cumartesi için adınızı ve telefonunuzu alabilir miyim?','23:48 · Elvirest'],['m','Ayşe 0555 *** ** 44','23:49'],['e','Teşekkürler Ayşe Hanım ✓ Resepsiyon sabah arayıp saati netleştirecek.','23:49 · Elvirest']], b: 'Gece 4 randevu talebi geldi, hepsine cevap verildi.' },
+  { k: 'yaz', ad: 'Yaz gecesi', sek: 'klinik', m: [['m','Hi! How much is a hair transplant?','03:02'],['e','Hello! Could you send a photo of the top and front of your head? 📸','03:02 · Elvirest'],['m','Sent. +44 7*** *** 210','03:04'],['e','Thank you ✓ Your consultant will contact you within 15 minutes.','03:04 · Elvirest']], b: 'Gece yurt dışından 2 hasta yazdı, danışmana atandı.' },
+  { k: 'son', ad: 'Sonbahar gecesi', sek: 'mobilya', m: [['m','Gri köşe koltuk fiyatı? Salon 330x280','01:27'],['e','Merhaba! Bu ölçüye uygun 3 modelimiz var, kataloğu gönderiyorum 👇 Size özel fiyat için arayalım mı?','01:27 · Elvirest'],['m','Olur 0532 *** ** 90','01:29'],['e','Teşekkürler ✓ Satış ekibimiz bugün ölçünüze göre net fiyatı iletecek.','01:29 · Elvirest']], b: 'Gece 5 teklif talebi geldi, 2 telefon numarası alındı.' }
 ];
+const mev = $('#mevsim'); let mi = 0;
+function mevsimKur(M){
+  hero.classList.remove('kis','ilk','yaz','son'); hero.classList.add(M.k);
+  let h = ''; const n = M.k === 'yaz' ? 26 : 38;
+  for (let k = 0; k < n; k++) h += '<i style="left:' + (Math.random()*100) + '%;animation-duration:' + (M.k === 'yaz' ? 7 + Math.random()*6 : 8 + Math.random()*8) + 's;animation-delay:' + (-Math.random()*12) + 's;transform:scale(' + (.6 + Math.random()*.8) + ')"></i>';
+  mev.className = 'mevsim ' + M.k; mev.innerHTML = az ? '' : h;
+}
+let SAH = [];
+function sahne(){
+  const M = MEVSIM[mi % MEVSIM.length]; mi++;
+  const m = M.m;
+  SAH = [
+    [800, () => { mevsimKur(M); saat.innerHTML = 'Saat ' + m[0][2] + ' · işletme kapalı <span class="mevsimAd">· ' + M.ad + '</span>'; $('#bildMetin').textContent = M.b; }],
+    [600, () => bal('m', m[0][1], m[0][2])],
+    [900, () => yaz(true)],
+    [1300, () => { yaz(false); bal('e', m[1][1], m[1][2]); }],
+    [1500, () => bal('m', m[2][1], m[2][2])],
+    [900, () => yaz(true)],
+    [1100, () => { yaz(false); bal('e', m[3][1], m[3][2]); }],
+    [2000, () => { saat.innerHTML = 'Saat 07:30 · günaydın <span class="mevsimAd">· ' + M.sek + '</span>'; hero.classList.add('sabah'); }],
+    [5500, () => bild.classList.add('gor')],
+    [2200, () => { bild.classList.remove('gor'); hero.classList.remove('sabah'); msj.innerHTML = ''; }]
+  ];
+}
+sahne();
 let yz;
 function bal(t, m, z){ const d = document.createElement('div'); d.className = 'bal ' + t; d.innerHTML = m + '<small>' + z + '</small>'; if (yz && yz.parentNode) msj.insertBefore(d, yz); else msj.appendChild(d); requestAnimationFrame(() => requestAnimationFrame(() => d.classList.add('gor'))); }
 function yaz(v){ if (!yz) { yz = document.createElement('div'); yz.className = 'yaziyor'; yz.innerHTML = '<i></i><i></i><i></i>'; } if (v) { msj.appendChild(yz); yz.classList.add('gor'); } else yz.classList.remove('gor'); }
 function pencere(){ if (hero.classList.contains('sabah')) return; pens.forEach(e => e.classList.toggle('yan', Math.random() < .5)); }
 let i = 0, calis = true;
-function adim(){ if (!calis) { setTimeout(adim, 500); return; } const [t, f] = SAH[i]; f(); i = (i + 1) % SAH.length; setTimeout(adim, t); }
-if (az) { bal('m','Merhaba, yarın akşam 4 kişilik masa var mı? 🙏','02:14'); bal('e','İyi geceler! Var, saat 20:00 uygun mu? Adınızı ve telefonunuzu alabilir miyim?','02:14 · Elvirest'); bild.classList.add('gor'); }
+function adim(){ if (!calis) { setTimeout(adim, 500); return; } const [t, f] = SAH[i]; f(); i++; if (i >= SAH.length) { i = 0; sahne(); } setTimeout(adim, t); }
+if (az) { mevsimKur(MEVSIM[0]); bal('m','Merhaba, yarın akşam 4 kişilik masa var mı? 🙏','02:14'); bal('e','İyi geceler! Var, saat 20:00 uygun mu? Adınızı ve telefonunuzu alabilir miyim?','02:14 · Elvirest'); bild.classList.add('gor'); }
 else { adim(); pencere(); setInterval(pencere, 2200); new IntersectionObserver(e => calis = e[0].isIntersecting).observe(hero); }
 
 /* görünür olunca */
