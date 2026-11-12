@@ -255,6 +255,80 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .hero.son .gok{background:linear-gradient(180deg,#0e0b1d 0%,#261a3a 55%,#4a2a4a 100%)}
 .gok{transition:background 2s}
 
+
+/* GİRİŞ */
+#giris{position:fixed;inset:0;z-index:200;background:linear-gradient(180deg,#05081a,#0e1438 60%,#1b1f52);color:#fff;display:grid;place-items:center;overflow:hidden;transition:opacity .9s ease,visibility .9s}
+#giris.bitti{opacity:0;visibility:hidden}
+#giris .gy{position:absolute;inset:0}
+#giris .gy b{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;animation:pir 2.6s infinite}
+#giris .ufuk{position:absolute;left:-20%;right:-20%;bottom:-62vh;height:90vh;border-radius:50%;background:radial-gradient(ellipse at 50% 0%,#ffd28a 0%,#ff8a5c 18%,#c2457a 34%,rgba(40,30,90,0) 60%);opacity:0;transform:translateY(40px);transition:opacity 1.6s,transform 2s}
+#giris.dogus .ufuk{opacity:1;transform:none}
+#giris .gun{position:absolute;left:50%;bottom:-140px;width:150px;height:150px;margin-left:-75px;border-radius:50%;background:radial-gradient(circle,#fff6d6,#ffc66b 55%,rgba(255,150,70,0) 72%);transition:bottom 2.2s cubic-bezier(.2,.7,.2,1)}
+#giris.dogus .gun{bottom:12vh}
+#giris.dogus{background:linear-gradient(180deg,#2a1d4a,#7a3a63 55%,#ff9a6a)}
+#giris{transition:opacity .9s,visibility .9s,background 2s}
+#giris .orta{position:relative;z-index:2;text-align:center;padding:0 24px;max-width:640px}
+#giris .satir{font-family:var(--head);font-weight:800;font-size:clamp(28px,5vw,52px);line-height:1.1;opacity:0;transform:translateY(16px);transition:all .8s}
+#giris .satir.gor{opacity:1;transform:none}
+#giris .satir.git{opacity:0;transform:translateY(-16px)}
+#giris .baloncuk{display:inline-block;margin-top:18px;padding:10px 16px;border-radius:18px;font-size:15px;opacity:0;transform:scale(.9);transition:all .5s}
+#giris .baloncuk.gor{opacity:1;transform:none}
+#giris .b-m{background:#fff;color:#222;border-bottom-left-radius:6px}
+#giris .b-e{background:linear-gradient(135deg,#ff7a45,#ff4f79);color:#fff;border-bottom-right-radius:6px}
+#giris .logo2{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;opacity:0;transition:opacity 1s}
+#giris .logo2.gor{opacity:1}
+#giris .logo2 i{display:block;width:56px;height:56px;margin:0 auto 14px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ffe0b0,var(--sun) 45%,var(--sun2));box-shadow:0 0 40px rgba(255,155,61,.8)}
+#giris .logo2 b{display:block;font-family:var(--head);font-weight:800;font-size:clamp(48px,9vw,96px);letter-spacing:-.02em}
+#giris .logo2 span{font-size:15px;opacity:.85}
+#giris .gec{position:absolute;top:18px;right:18px;z-index:3;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:8px 16px;font-size:13px;cursor:pointer}
+/* sektör kartı sahneleri */
+.sk .anim{height:120px;border-radius:14px;position:relative;overflow:hidden;margin-bottom:4px}
+.a-rest{background:linear-gradient(160deg,#2a1a14,#4a2a1c)}
+.a-rest .tabak{position:absolute;left:50%;bottom:18px;width:110px;height:26px;margin-left:-55px;border-radius:50%;background:#f4efe8;box-shadow:inset 0 -5px 0 #ddd3c6}
+.a-rest .yemek{position:absolute;left:50%;bottom:30px;width:56px;height:24px;margin-left:-28px;border-radius:50% 50% 40% 40%;background:#e0893c}
+.a-rest .buhar{position:absolute;bottom:56px;width:6px;height:30px;border-radius:6px;background:rgba(255,255,255,.5);filter:blur(2px);opacity:0}
+.oyna .a-rest .buhar{animation:buhar 2.4s infinite}
+.a-rest .buhar:nth-of-type(3){left:46%}.a-rest .buhar:nth-of-type(4){left:51%;animation-delay:.8s}.a-rest .buhar:nth-of-type(5){left:56%;animation-delay:1.6s}
+@keyframes buhar{0%{transform:translateY(10px) scaleY(.6);opacity:0}40%{opacity:.8}100%{transform:translateY(-30px) scaleY(1.2) translateX(6px);opacity:0}}
+.a-rest .zil{position:absolute;right:14px;top:12px;background:#fff;color:#222;font-size:11px;font-weight:600;border-radius:999px;padding:5px 10px;opacity:0}
+.oyna .a-rest .zil{animation:cip2 4s infinite}
+@keyframes cip2{0%,30%{opacity:0;transform:translateY(-6px)}40%,85%{opacity:1;transform:none}100%{opacity:0}}
+.a-guz{background:radial-gradient(120% 100% at 50% 0%,#5a3354,#251a2e)}
+.a-guz .ay3{position:absolute;left:50%;bottom:0;transform:translateX(-50%);display:flex;gap:10px;align-items:flex-end}
+.a-guz .ay3 i{width:34px;height:84px;border-radius:99px 99px 4px 4px;border:1px solid rgba(255,230,232,.3);background:linear-gradient(180deg,rgba(255,220,225,.2),rgba(255,220,225,.03))}
+.a-guz .ay3 i:nth-child(2){height:100px}
+.oyna .a-guz .ay3 i{animation:isik2 3s infinite}.oyna .a-guz .ay3 i:nth-child(2){animation-delay:1s}.oyna .a-guz .ay3 i:nth-child(3){animation-delay:2s}
+.a-guz .zil{position:absolute;right:12px;top:12px;background:#fff;color:#222;font-size:11px;font-weight:600;border-radius:999px;padding:5px 10px;opacity:0}
+.oyna .a-guz .zil{animation:cip2 4s 1s infinite}
+.a-mob{background:linear-gradient(160deg,#f6efe6,#eadfce)}
+.a-mob svg{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:80%}
+.a-mob path{fill:none;stroke:#6b4e3a;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:900;stroke-dashoffset:900}
+.oyna .a-mob path{animation:ciz 5s ease-in-out infinite}
+.a-kli{background:radial-gradient(circle at 50% 50%,#13325a,#0a1730)}
+.a-kli .dunya{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:repeating-linear-gradient(90deg,#2a7bd0 0 10px,#2f8ae0 10px 20px);box-shadow:inset -10px -6px 0 rgba(0,0,0,.25),0 0 30px rgba(80,160,255,.35);background-size:40px 100%}
+.oyna .a-kli .dunya{animation:don 6s linear infinite}
+@keyframes don{to{background-position:80px 0}}
+.a-kli .yorunge{position:absolute;left:50%;top:50%;width:140px;height:140px;margin:-70px 0 0 -70px}
+.oyna .a-kli .yorunge{animation:yr 4s linear infinite}
+@keyframes yr{to{transform:rotate(360deg)}}
+.a-kli .yorunge span{position:absolute;top:0;left:50%;font-size:18px;transform:translateX(-50%) rotate(90deg)}
+.a-kli .dil{position:absolute;font-size:10px;font-weight:700;color:#fff;background:rgba(255,255,255,.15);border-radius:6px;padding:2px 6px;opacity:0}
+.oyna .a-kli .dil{animation:cip2 3s infinite}
+.a-kuru{background:linear-gradient(160deg,#fff4e0,#f3dfbd)}
+.a-kuru .kav{position:absolute;left:50%;bottom:12px;width:70px;height:84px;margin-left:-35px;border:3px solid #c9a46a;border-top:0;border-radius:4px 4px 18px 18px;overflow:hidden}
+.a-kuru .kav::before{content:"";position:absolute;left:-6px;right:-6px;top:-8px;height:10px;background:#a07040;border-radius:4px}
+.a-kuru .dolu{position:absolute;left:0;right:0;bottom:0;height:0;background:radial-gradient(circle at 20% 30%,#c7843a 5px,transparent 6px),radial-gradient(circle at 60% 60%,#a96a2d 6px,transparent 7px),radial-gradient(circle at 80% 20%,#d79a4f 5px,transparent 6px),#e2b071;background-size:22px 22px}
+.oyna .a-kuru .dolu{animation:dol2 4s infinite}
+@keyframes dol2{0%{height:0}70%,90%{height:85%}100%{height:85%;opacity:0}}
+.a-kuru .ceviz{position:absolute;top:-12px;width:10px;height:10px;border-radius:50%;background:#b0773a}
+.oyna .a-kuru .ceviz{animation:dus2 1.2s infinite ease-in}
+.a-kuru .ceviz:nth-of-type(2){left:46%;animation-delay:.3s}.a-kuru .ceviz:nth-of-type(3){left:52%;animation-delay:.7s}.a-kuru .ceviz:nth-of-type(4){left:49%;animation-delay:1s}
+@keyframes dus2{to{transform:translateY(90px)}}
+.a-ozel{background:linear-gradient(160deg,#efecf5,#ddd6ee)}
+.a-ozel .disli{position:absolute;top:50%;left:50%;width:56px;height:56px;margin:-28px 0 0 -48px;border-radius:50%;border:10px dotted #8a7fb0}
+.a-ozel .disli.k{width:36px;height:36px;margin:-34px 0 0 6px;border-width:8px}
+.oyna .a-ozel .disli{animation:yr 5s linear infinite}.oyna .a-ozel .disli.k{animation-direction:reverse;animation-duration:3.2s}
+
 /* referans sahneleri */
 .refs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:900px){.refs{grid-template-columns:1fr}}
@@ -333,11 +407,22 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .alt-yazi small{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#ffb35c;margin-bottom:4px}
 .alt-yazi button{background:#fff;color:#1b1730;border:0;border-radius:999px;padding:9px 16px;font-weight:600;cursor:pointer;font-size:13px}
 .saatg{font-variant-numeric:tabular-nums}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){.mevsim i,.yildiz b{animation-duration:20s!important}}
 </style>
 </head>
 <body>
 
+<div id="giris" aria-hidden="true">
+  <div class="gy" id="gy"></div><div class="ufuk"></div><div class="gun"></div>
+  <button class="gec" type="button" id="gec">Geç ›</button>
+  <div class="orta" id="gOrta">
+    <div class="satir" id="g1">Gece 02:14.</div>
+    <div class="satir" id="g2" style="font-size:clamp(20px,3vw,28px);font-weight:600;margin-top:10px">İşletmeniz kapalı. Bir müşteri yazıyor…</div>
+    <div><span class="baloncuk b-m" id="gb1">Yarın 4 kişilik yer var mı? 🙏</span></div>
+    <div><span class="baloncuk b-e" id="gb2">Var! 20:00 ayrıldı ✓ · Elvirest</span></div>
+  </div>
+  <div class="logo2" id="gLogo"><i></i><b>Elvirest</b><span>Siz uyurken işletmeniz kazanmaya devam etsin.</span></div>
+</div>
 <nav id="nav">
   <div class="wrap navin">
     <a class="logo" href="#"><i></i>Elvirest</a>
@@ -573,12 +658,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       <p class="lead">Hazır paket satmıyoruz. Günlük akışınıza bakıp tekrar eden işleri otomatiğe bağlıyoruz.</p>
     </div>
     <div class="sektorler">
-      <div class="sk gel"><span class="rozet">Çalışıyor</span><div class="emo">🍽️</div><h3>Restoran · Kafe · Lounge</h3><p>Fatura fotoğrafından maliyet, gün sonu raporundan iptal ve ikram, rezervasyon cevabı, patrona net kâr paneli.</p><button type="button" data-demo="restoran">Örnek konuşmayı izle →</button></div>
-      <div class="sk gel"><span class="rozet">Çalışıyor</span><div class="emo">💅</div><h3>Güzellik merkezi</h3><p>Fiyat ve hizmet sorularına anında cevap, randevu talebi ve telefon, resepsiyona bildirim, ertesi gün hatırlatma.</p><button type="button" data-demo="guzellik">Örnek konuşmayı izle →</button></div>
-      <div class="sk gel"><span class="rozet">Çalışıyor</span><div class="emo">🛋️</div><h3>Mobilya · Mağaza</h3><p>Satış odaklı DM, katalog gönderme, ölçü ve şehir toplama, sesli ve görselli mesajları anlama, teklif takibi.</p><button type="button" data-demo="mobilya">Örnek konuşmayı izle →</button></div>
-      <div class="sk gel"><span class="rozet h">Kurulum hazır</span><div class="emo">🦷</div><h3>Sağlık turizmi · Klinik</h3><p>Yabancı dilde 7/24 ilk karşılama, danışmana atama, 15 dakika uyarısı, 3-5-7 gün takip mesajları.</p><button type="button" data-demo="klinik">Örnek konuşmayı izle →</button></div>
-      <div class="sk gel"><span class="rozet h">Hazırlanıyor</span><div class="emo">🥜</div><h3>Perakende · Kuruyemiş</h3><p>Kurumsal hediye siparişleri için form, sipariş tablosu ve anlık bildirim. Aylık paylaşım planı.</p></div>
-      <div class="sk gel"><span class="rozet y">Size özel</span><div class="emo">✨</div><h3>Sektörünüz burada yok mu?</h3><p>Ne tekrar ediyorsa onu otomatikleştiririz. En çok vakit alan 2-3 işi seçer, ilk sonucu bir ay içinde gösteririz.</p><a class="btn line" href="#iletisim" style="align-self:flex-start;padding:10px 16px">Konuşalım</a></div>
+      <div class="sk gel"><span class="rozet">Çalışıyor</span><div class="anim a-rest"><div class="tabak"></div><div class="yemek"></div><span class="buhar"></span><span class="buhar"></span><span class="buhar"></span><div class="zil">🔔 Masa 4 · rezervasyon</div></div><h3>Restoran · Kafe · Lounge</h3><p>Fatura fotoğrafından maliyet, gün sonu raporundan iptal ve ikram, rezervasyon cevabı, patrona net kâr paneli.</p><button type="button" data-demo="restoran">Örnek konuşmayı izle →</button></div>
+      <div class="sk gel"><span class="rozet">Çalışıyor</span><div class="anim a-guz"><div class="ay3"><i></i><i></i><i></i></div><div class="zil">✓ Randevu 14:00</div></div><h3>Güzellik merkezi</h3><p>Fiyat ve hizmet sorularına anında cevap, randevu talebi ve telefon, resepsiyona bildirim, ertesi gün hatırlatma.</p><button type="button" data-demo="guzellik">Örnek konuşmayı izle →</button></div>
+      <div class="sk gel"><span class="rozet">Çalışıyor</span><div class="anim a-mob"><svg viewBox="0 0 300 140" aria-hidden="true"><path d="M20 110 V60 Q20 45 35 45 H150 Q165 45 165 60 V75 H265 Q280 75 280 90 V110 M20 110 H280 M20 75 H165 M40 110 V122 M260 110 V122"/></svg></div><h3>Mobilya · Mağaza</h3><p>Satış odaklı DM, katalog gönderme, ölçü ve şehir toplama, sesli ve görselli mesajları anlama, teklif takibi.</p><button type="button" data-demo="mobilya">Örnek konuşmayı izle →</button></div>
+      <div class="sk gel"><span class="rozet h">Kurulum hazır</span><div class="anim a-kli"><div class="dunya"></div><div class="yorunge"><span>✈️</span></div><span class="dil" style="left:12px;top:14px">EN</span><span class="dil" style="right:14px;top:30px;animation-delay:1s">AR</span><span class="dil" style="left:20px;bottom:16px;animation-delay:2s">RU</span></div><h3>Sağlık turizmi · Klinik</h3><p>Yabancı dilde 7/24 ilk karşılama, danışmana atama, 15 dakika uyarısı, 3-5-7 gün takip mesajları.</p><button type="button" data-demo="klinik">Örnek konuşmayı izle →</button></div>
+      <div class="sk gel"><span class="rozet h">Hazırlanıyor</span><div class="anim a-kuru"><div class="kav"><div class="dolu"></div></div><span class="ceviz"></span><span class="ceviz"></span><span class="ceviz"></span></div><h3>Perakende · Kuruyemiş</h3><p>Kurumsal hediye siparişleri için form, sipariş tablosu ve anlık bildirim. Aylık paylaşım planı.</p></div>
+      <div class="sk gel"><span class="rozet y">Size özel</span><div class="anim a-ozel"><div class="disli"></div><div class="disli k"></div></div><h3>Sektörünüz burada yok mu?</h3><p>Ne tekrar ediyorsa onu otomatikleştiririz. En çok vakit alan 2-3 işi seçer, ilk sonucu bir ay içinde gösteririz.</p><a class="btn line" href="#iletisim" style="align-self:flex-start;padding:10px 16px">Konuşalım</a></div>
     </div>
   </div>
 </section>
@@ -639,7 +724,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
 <script>
 (function(){
-const az = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const az = false;
 const $ = s => document.querySelector(s);
 const tl = v => new Intl.NumberFormat('tr-TR',{maximumFractionDigits:0}).format(Math.round(v));
 
@@ -704,7 +789,7 @@ function pencere(){ if (hero.classList.contains('sabah')) return; pens.forEach(e
 let i = 0, calis = true;
 function adim(){ if (!calis) { setTimeout(adim, 500); return; } const [t, f] = SAH[i]; f(); i++; if (i >= SAH.length) { i = 0; sahne(); } setTimeout(adim, t); }
 if (az) { mevsimKur(MEVSIM[0]); bal('m','Merhaba, yarın akşam 4 kişilik masa var mı? 🙏','02:14'); bal('e','İyi geceler! Var, saat 20:00 uygun mu? Adınızı ve telefonunuzu alabilir miyim?','02:14 · Elvirest'); bild.classList.add('gor'); }
-else { adim(); pencere(); setInterval(pencere, 2200); new IntersectionObserver(e => calis = e[0].isIntersecting).observe(hero); }
+else { let gv = true; try { gv = !sessionStorage.getItem('elv_giris'); } catch (e) {} setTimeout(adim, gv ? 7300 : 0); pencere(); setInterval(pencere, 2200); new IntersectionObserver(e => calis = e[0].isIntersecting).observe(hero); }
 
 /* görünür olunca */
 const say = el => { const n = +el.dataset.say, son = el.dataset.son || '', on = el.dataset.on || ''; if (az) { el.textContent = on + tl(n) + son; return; } const t0 = performance.now(); const f = t => { const k = Math.min(1, (t - t0) / 1400), e = 1 - Math.pow(1 - k, 3); el.textContent = on + tl(n * e) + son; if (k < 1) requestAnimationFrame(f); }; requestAnimationFrame(f); };
@@ -781,6 +866,32 @@ dlg.addEventListener('click', e => { if (e.target === dlg) { dz.forEach(clearTim
   if (az) { H.classList.add('sab', 'acik'); alt.textContent = 'Elvirest ile'; yz.textContent = 'Gece gelen mesaja 3 saniyede cevap, sabah müşteri masada.'; return; }
   new IntersectionObserver(e => { if (e[0].isIntersecting && !basladi) { basladi = true; oyna(); } }, { threshold: .4 }).observe(H);
 })();
+})();
+
+/* site girişi */
+(function(){
+  const G = document.getElementById('giris'); if (!G) return;
+  let gordu = false; try { gordu = sessionStorage.getItem('elv_giris'); sessionStorage.setItem('elv_giris', '1'); } catch (e) {}
+  if (gordu) { G.remove(); return; }
+  document.documentElement.style.overflow = 'hidden';
+  let h = ''; for (let i = 0; i < 80; i++) h += '<b style="left:' + Math.random()*100 + '%;top:' + Math.random()*80 + '%;animation-delay:' + Math.random()*2.6 + 's;opacity:' + (.3 + Math.random()*.7) + '"></b>';
+  document.getElementById('gy').innerHTML = h;
+  const z = [], T = (ms, f) => z.push(setTimeout(f, ms)), $g = id => document.getElementById(id);
+  function bitir(){ z.forEach(clearTimeout); G.classList.add('bitti'); document.documentElement.style.overflow = ''; setTimeout(() => G.remove(), 1000); }
+  T(200, () => $g('g1').classList.add('gor'));
+  T(900, () => $g('g2').classList.add('gor'));
+  T(1700, () => $g('gb1').classList.add('gor'));
+  T(2900, () => $g('gb2').classList.add('gor'));
+  T(4100, () => { ['g1','g2'].forEach(i => $g(i).classList.add('git')); ['gb1','gb2'].forEach(i => $g(i).classList.remove('gor')); G.classList.add('dogus'); });
+  T(5200, () => $g('gLogo').classList.add('gor'));
+  T(7000, bitir);
+  $g('gec').addEventListener('click', bitir);
+  G.addEventListener('click', e => { if (e.target.id !== 'gec') bitir(); });
+})();
+/* sektör kartı sahneleri */
+(function(){
+  const io2 = new IntersectionObserver(es => es.forEach(e => { e.target.classList.toggle('oyna', e.isIntersecting); }), { threshold: .3 });
+  document.querySelectorAll('.sk').forEach(k => io2.observe(k));
 })();
 </script>
 </body>
