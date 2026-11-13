@@ -1,7 +1,18 @@
 <!doctype html>
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Elvirest Panel</title><meta name="robots" content="noindex">
-<meta http-equiv="refresh" content="0;url=https://blackprens.app.n8n.cloud/webhook/elvirest">
-<style>body{margin:0;background:#0b1026;color:#fff;font:15px Inter,system-ui,sans-serif;display:grid;place-items:center;height:100vh}a{color:#ff9b3d}</style></head>
-<body><p>Panele yönlendiriliyorsunuz… <a href="https://blackprens.app.n8n.cloud/webhook/elvirest">Açılmazsa tıklayın</a></p>
-<script>location.replace('https://blackprens.app.n8n.cloud/webhook/elvirest')</script></body></html>
+<title>Elvirest Panel</title><meta name="robots" content="noindex,nofollow"><link rel="icon" href="/favicon.svg">
+<style>body{margin:0;background:#0a0b14;color:#fff;font:15px Inter,system-ui,sans-serif;display:grid;place-items:center;height:100vh}.y{width:42px;height:42px;border-radius:50%;border:3px solid rgba(255,255,255,.15);border-top-color:#ff5e3a;animation:d .8s linear infinite;margin:0 auto 14px}@keyframes d{to{transform:rotate(360deg)}}a{color:#ff9b3d}</style></head>
+<body><div style="text-align:center"><div class="y"></div><p>Panel yükleniyor…</p></div>
+<script>
+(function(){
+  var N='https://blackprens.app.n8n.cloud/webhook/elvirest';
+  function yedek(){location.replace(N)}
+  var zaman=setTimeout(yedek,12000);
+  fetch(N,{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(h){
+    clearTimeout(zaman);
+    h=h.split("location.origin+'/webhook/elvirest-api'").join("'https://blackprens.app.n8n.cloud/webhook/elvirest-api'");
+    if(h.indexOf("'https://blackprens.app.n8n.cloud/webhook/elvirest-api'")<0){yedek();return}
+    document.open();document.write(h);document.close();
+  }).catch(yedek);
+})();
+</script></body></html>
