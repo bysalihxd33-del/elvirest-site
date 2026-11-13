@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow">
+<title>Fumar Lounge Köz</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: gece lounge'u; köz turuncusu tek vurgu, duman katmanları hero'da; tek sütun akış + sekmeli menü. */
+:root{
+  --bg:#0E211C; --bg2:#13302A; --card:#173A32; --ink:#F3EEE2; --mut:#BFC9BC; --line:#2A4D44;
+  --ember:#D4AE63; --ember2:#B9823A; --leaf:#8FB79A;
+  --f-disp:'DM Serif Display', Georgia, serif; --f-body:'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.brand{font-family:var(--f-disp);font-size:26px;letter-spacing:.18em;text-decoration:none;color:var(--ink)}
+.brand small{font-family:var(--f-body);font-size:10px;letter-spacing:.3em;color:var(--ember);display:block;margin-top:-6px}
+.nl{display:flex;gap:20px}.nl a{color:var(--mut);text-decoration:none;font-size:14px;font-weight:600}.nl a:hover{color:var(--ink)}
+.btn{display:inline-block;border-radius:999px;padding:12px 22px;font-weight:700;text-decoration:none;font-size:15px;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.pri{background:linear-gradient(135deg,var(--ember),var(--ember2));color:#1a0f08;box-shadow:0 12px 30px -12px var(--ember2)}
+.gh{border:1.5px solid var(--line);color:var(--ink)}
+@media(max-width:760px){.nl{display:none}}
+/* hero */
+header{position:relative;overflow:hidden;padding-block:92px 104px;background:radial-gradient(900px 420px at 75% 115%,#E2603A40,transparent 60%),var(--bg)}
+.duman{position:absolute;inset:0;pointer-events:none}
+.duman i{position:absolute;bottom:-140px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,#ffffff18,transparent 65%);filter:blur(12px);animation:yuksel 14s linear infinite}
+.duman i:nth-child(1){left:62%;animation-delay:0s}.duman i:nth-child(2){left:74%;animation-delay:4s;width:220px;height:220px}.duman i:nth-child(3){left:84%;animation-delay:8s}.duman i:nth-child(4){left:55%;animation-delay:11s;width:200px;height:200px}
+@keyframes yuksel{0%{transform:translate(0,0) scale(.6);opacity:0}15%{opacity:1}100%{transform:translate(-60px,-720px) scale(1.6);opacity:0}}
+.kor{position:absolute;right:13%;bottom:64px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#FFD39A,var(--ember) 45%,var(--ember2) 70%,transparent 72%);box-shadow:0 0 80px 20px #E2603A55;animation:nefes 3.4s ease-in-out infinite}
+@keyframes nefes{50%{box-shadow:0 0 120px 34px #F0A24E66;transform:scale(1.04)}}
+@media(max-width:760px){.kor{width:70px;height:70px;right:8%;bottom:30px}}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--ember);font-weight:700}
+h1{font-family:var(--f-disp);font-weight:400;font-size:clamp(46px,8vw,96px);line-height:.98;margin:14px 0 18px;max-width:11ch;text-wrap:balance}
+h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(34px,5vw,56px);line-height:1.05;margin:6px 0 12px;text-wrap:balance}
+.lead{font-size:18px;color:var(--mut);max-width:52ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.bilgi{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;font-size:14px;color:var(--mut)}
+.bilgi b{color:var(--ink);font-weight:600}
+section{padding-block:80px;scroll-margin-top:70px}
+/* kampanya */
+.kamp{background:var(--bg2);border-block:1px solid var(--line)}
+.kgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:center}
+@media(max-width:820px){.kgrid{grid-template-columns:1fr}}
+.sira{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin-top:8px}
+.ng{width:58px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;color:var(--mut)}
+.ng svg{width:58px;height:110px}
+.ng.ikram{color:var(--ember);font-weight:700}
+.ng.ikram svg{filter:drop-shadow(0 0 14px #F0A24E99);animation:zip 2.4s ease-in-out infinite}
+@media(max-width:520px){.sira{gap:6px;flex-wrap:nowrap}.ng{width:44px}.ng svg{width:44px;height:84px}.esit{font-size:32px;margin:0 0 22px}}
+@keyframes zip{50%{transform:translateY(-8px)}}
+.esit{font-family:var(--f-disp);font-size:44px;color:var(--ember);margin:0 4px 26px}
+.kart{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px}
+.kart ol{margin:12px 0 0;padding-left:20px;color:var(--mut)}.kart li{margin-bottom:8px}
+.kosul{font-size:13px;color:var(--mut);margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
+/* öne çıkanlar */
+.one{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:30px}
+.one div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.one h3{margin:0 0 4px;font-size:18px}.one p{margin:0;color:var(--mut);font-size:14px}.one b{color:var(--ember);font-size:15px}
+/* menü */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 22px}
+.tab{font:inherit;font-weight:700;font-size:14px;border:1px solid var(--line);background:transparent;color:var(--mut);border-radius:999px;padding:9px 18px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ember);border-color:var(--ember);color:#1a0f08}
+.panel{columns:2 340px;column-gap:40px}
+.kat{break-inside:avoid;margin-bottom:28px}
+.kat h4{font-size:12px;letter-spacing:.18em;color:var(--ember);margin:0 0 8px;font-weight:800}
+.kat ul{list-style:none;margin:0;padding:0}
+.kat li{display:flex;align-items:baseline;gap:8px;padding:6px 0;font-size:15px}
+.kat li span{min-width:0}.kat li i{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-4px)}
+.kat li b{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.not{font-size:13px;color:var(--mut)}
+/* iletişim */
+.ilet{text-align:center;background:radial-gradient(700px 300px at 50% 120%,#E2603A33,transparent 70%),var(--bg2)}
+.ilet .lead{margin-inline:auto}.ilet .cta{justify-content:center}
+.tel{margin-top:16px;color:var(--mut);font-size:15px}
+footer{padding-block:24px;color:var(--mut);font-size:13px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.damga{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:22px;max-width:460px}
+.d{aspect-ratio:1;border-radius:50%;border:2px dashed var(--line);display:grid;place-items:center;font-weight:800;font-size:13px;color:var(--mut);position:relative}
+.d.dolu{border-style:solid;border-color:var(--ember);color:var(--ink);animation:bas .6s both}
+.d.dolu::after{content:"";position:absolute;inset:18%;border-radius:50%;background:var(--ember);opacity:.22}
+.d:nth-child(1){animation-delay:.2s}.d:nth-child(2){animation-delay:.5s}.d:nth-child(3){animation-delay:.8s}.d:nth-child(4){animation-delay:1.1s}
+.d.ikram{border:2px solid var(--ember);background:var(--ember);color:var(--bg);font-size:11px;animation:parla 2.4s ease-in-out 1.6s infinite}
+@keyframes bas{0%{transform:scale(1.6);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes parla{50%{box-shadow:0 0 30px 6px color-mix(in srgb,var(--ember) 55%,transparent)}}
+.damga-alt{display:flex;justify-content:space-between;max-width:460px;font-size:12px;color:var(--mut);margin-top:8px}
+.kor{background:radial-gradient(circle at 40% 40%,#F5DFA9,var(--ember) 45%,var(--ember2) 72%,transparent 74%);box-shadow:0 0 80px 20px #D4AE6344}header{background:radial-gradient(900px 420px at 75% 115%,#D4AE6330,transparent 60%),var(--bg)}h1{max-width:13ch}
+
+#kozcan{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+nav,header,main,footer{position:relative;z-index:1}
+header,section{background-color:transparent}
+.kamp,.ilet{background:color-mix(in srgb,var(--bg2) 82%,transparent)}
+.lule{position:absolute;right:7%;bottom:-10px;height:min(560px,92%);width:auto;pointer-events:none}
+.koz{animation:kozparla 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.koz:nth-of-type(2){animation-delay:.6s}.koz:nth-of-type(3){animation-delay:1.2s}
+@keyframes kozparla{0%,100%{filter:drop-shadow(0 0 5px #E2603A) brightness(.85)}50%{filter:drop-shadow(0 0 16px #FF8A3D) brightness(1.25)}}
+.alev{transform-box:fill-box;transform-origin:50% 100%;animation:titre 1.1s ease-in-out infinite}
+.alev:nth-of-type(5){animation-delay:.35s}.alev:nth-of-type(6){animation-delay:.7s}
+@keyframes titre{0%,100%{transform:scaleY(.6) skewX(0);opacity:.6}50%{transform:scaleY(1.15) skewX(-6deg);opacity:1}}
+.hale{animation:hale 2.4s ease-in-out infinite}@keyframes hale{50%{opacity:.6}}
+.kab{animation:kabarcik 2.2s ease-in infinite;transform-box:fill-box}
+.k2{animation-delay:.55s}.k3{animation-delay:1.1s}.k4{animation-delay:1.65s}
+@keyframes kabarcik{0%{transform:translate(0,0);opacity:0}15%{opacity:.9}100%{transform:translate(6px,-80px);opacity:0}}
+.dalga{animation:dalga 2.2s ease-in-out infinite}@keyframes dalga{50%{transform:translateY(-3px)}}
+.duman2{animation:duman2 5s ease-out infinite;transform-box:fill-box}@keyframes duman2{0%{transform:translate(0,30px) scale(.6);opacity:0}30%{opacity:.4}100%{transform:translate(-30px,-60px) scale(1.6);opacity:0}}
+@media(max-width:760px){.lule{opacity:.28;right:-12%;height:82%}}
+.kor{display:none}
+.seviye{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:28px}
+.seviye div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+.seviye b{display:block;color:var(--ember);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.seviye p{margin:6px 0 0;color:var(--mut);font-size:14px}
+</style></head><body>
+
+<canvas id="kozcan" aria-hidden="true"></canvas>
+<script>
+(function(){
+  const c=document.getElementById('kozcan'),x=c.getContext('2d');let W,H,P=[];
+  const az=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function boyut(){W=c.width=innerWidth*devicePixelRatio;H=c.height=innerHeight*devicePixelRatio}
+  boyut();addEventListener('resize',boyut);
+  function kaynak(){const l=document.querySelector('.lule');if(!l)return null;const r=l.getBoundingClientRect();return{x:(r.left+r.width*.5)*devicePixelRatio,y:(r.top+r.height*.11)*devicePixelRatio,w:r.width*.35*devicePixelRatio}}
+  function yeni(){const k=kaynak();if(k&&Math.random()<.65&&k.y>0&&k.y<H)return{x:k.x+(Math.random()-.5)*k.w,y:k.y,r:(.8+Math.random()*1.8)*devicePixelRatio,vy:(.8+Math.random()*1.8)*devicePixelRatio,vx:(Math.random()-.5)*.7*devicePixelRatio,a:1,t:Math.random()*6};return{x:W*(.55+Math.random()*.4),y:H+10,r:(1+Math.random()*2.2)*devicePixelRatio,vy:(.6+Math.random()*1.6)*devicePixelRatio,vx:(Math.random()-.6)*.6*devicePixelRatio,a:1,t:Math.random()*6}}
+  for(let i=0;i<70;i++){const p=yeni();p.y=Math.random()*H;P.push(p)}
+  function ciz(){
+    x.clearRect(0,0,W,H);
+    for(const p of P){
+      p.y-=p.vy;p.x+=p.vx+Math.sin(p.t+=.05)*.4*devicePixelRatio;p.a-=.0025;
+      if(p.y<-10||p.a<=0)Object.assign(p,yeni());
+      const g=x.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);
+      g.addColorStop(0,'rgba(255,190,110,'+p.a+')');g.addColorStop(.35,'rgba(240,120,50,'+p.a*.7+')');g.addColorStop(1,'rgba(240,96,58,0)');
+      x.fillStyle=g;x.beginPath();x.arc(p.x,p.y,p.r*4,0,7);x.fill();
+    }
+    if(!az)requestAnimationFrame(ciz);
+  }
+  ciz();
+})();
+</script>
+<nav><div class="wrap">
+  <a class="brand" href="#ust">FUMAR<small>LOUNGE · BALGAT</small></a>
+  <div class="nl"><a href="#kampanya">Kampanya</a><a href="#menu">Menü</a><a href="#iletisim">Rezervasyon</a></div>
+  <a class="btn pri" href="https://wa.me/905348812029?text=Merhaba%2C%20bu%20ak%C5%9Fam%20i%C3%A7in%20masa%20ay%C4%B1rtmak%20istiyorum." target="_blank" rel="noopener" style="padding:9px 16px;font-size:14px">Masa ayırt</a>
+</div></nav>
+
+<header id="ust">
+  <div class="duman" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="kor" aria-hidden="true"></div>
+  <svg class="lule" viewBox="0 0 300 560" aria-hidden="true">
+    <defs>
+      <radialGradient id="isi" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FF8A3D" stop-opacity=".5"/><stop offset="1" stop-color="#FF8A3D" stop-opacity="0"/></radialGradient>
+      <radialGradient id="kz" cx=".5" cy=".35" r=".7"><stop offset="0" stop-color="#FFE3A3"/><stop offset=".35" stop-color="#FF9A3C"/><stop offset=".75" stop-color="#C2431C"/><stop offset="1" stop-color="#5A1E10"/></radialGradient>
+      <linearGradient id="metal" x1="0" x2="1"><stop offset="0" stop-color="#6E5B48"/><stop offset=".5" stop-color="#D4AE63"/><stop offset="1" stop-color="#6E5B48"/></linearGradient>
+      <linearGradient id="cam" x1="0" x2="1"><stop offset="0" stop-color="#1F5A4C" stop-opacity=".9"/><stop offset=".5" stop-color="#3E8C76" stop-opacity=".75"/><stop offset="1" stop-color="#1F5A4C" stop-opacity=".9"/></linearGradient>
+      <clipPath id="vazo"><path d="M110 400 Q60 430 70 490 Q80 545 150 548 Q220 545 230 490 Q240 430 190 400 Z"/></clipPath>
+      <filter id="bulanik"><feGaussianBlur stdDeviation="6"/></filter>
+    </defs>
+    <ellipse class="hale" cx="150" cy="70" rx="140" ry="90" fill="url(#isi)"/>
+    <g class="duman2" filter="url(#bulanik)" opacity=".35"><circle cx="150" cy="30" r="22" fill="#EDE6DA"/><circle cx="170" cy="5" r="18" fill="#EDE6DA"/></g>
+    <!-- közler -->
+    <g class="kozlar">
+      <rect class="koz" x="100" y="52" width="34" height="22" rx="7" fill="url(#kz)"/>
+      <rect class="koz" x="134" y="46" width="34" height="24" rx="7" fill="url(#kz)"/>
+      <rect class="koz" x="168" y="53" width="30" height="21" rx="7" fill="url(#kz)"/>
+      <path class="alev" d="M118 52 Q121 38 126 50 Q128 42 131 52 Z" fill="#FFC56B"/>
+      <path class="alev" d="M150 46 Q154 28 160 44 Q163 34 166 46 Z" fill="#FFD48A"/>
+      <path class="alev" d="M180 53 Q183 42 188 52 Z" fill="#FFB65A"/>
+      <path d="M108 60 l8 3 M142 56 l10 2 M175 62 l9 -2" stroke="#7A2A12" stroke-width="1.5" opacity=".6"/>
+    </g>
+    <!-- lüle ve folyo -->
+    <ellipse cx="150" cy="76" rx="70" ry="9" fill="#B9B2A6"/>
+    <path d="M90 78 L210 78 L186 118 Q150 128 114 118 Z" fill="#7A4B32"/>
+    <path d="M100 82 L200 82" stroke="#5A3424" stroke-width="3"/>
+    <!-- gövde -->
+    <rect x="142" y="120" width="16" height="70" fill="url(#metal)"/>
+    <ellipse cx="150" cy="196" rx="62" ry="10" fill="url(#metal)"/>
+    <ellipse cx="150" cy="194" rx="56" ry="6" fill="#3A2A1E" opacity=".5"/>
+    <rect x="144" y="204" width="12" height="70" fill="url(#metal)"/>
+    <circle cx="150" cy="282" r="12" fill="url(#metal)"/>
+    <rect x="145" y="292" width="10" height="70" fill="url(#metal)"/>
+    <rect x="132" y="362" width="36" height="16" rx="4" fill="url(#metal)"/>
+    <!-- hortum -->
+    <path class="hortum" d="M168 300 Q250 300 262 380 Q272 460 236 520" stroke="#2B1E17" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path d="M168 300 Q250 300 262 380 Q272 460 236 520" stroke="#D4AE63" stroke-width="2" fill="none" stroke-dasharray="3 9" opacity=".7"/>
+    <!-- vazo -->
+    <path d="M118 378 L182 378 L190 400 L110 400 Z" fill="url(#metal)"/>
+    <path d="M110 400 Q60 430 70 490 Q80 545 150 548 Q220 545 230 490 Q240 430 190 400 Z" fill="url(#cam)" stroke="#8FB79A" stroke-opacity=".4"/>
+    <g clip-path="url(#vazo)">
+      <rect x="60" y="455" width="190" height="100" fill="#2F7A63" opacity=".55"/>
+      <path class="dalga" d="M60 456 Q90 448 120 456 T180 456 T240 456 T300 456 V470 H60 Z" fill="#5FB096" opacity=".5"/>
+      <rect x="146" y="400" width="8" height="120" fill="url(#metal)"/>
+      <circle class="kab" cx="150" cy="530" r="5" fill="#CDEFE3"/>
+      <circle class="kab k2" cx="146" cy="530" r="3.5" fill="#CDEFE3"/>
+      <circle class="kab k3" cx="155" cy="530" r="4" fill="#CDEFE3"/>
+      <circle class="kab k4" cx="149" cy="530" r="2.5" fill="#CDEFE3"/>
+    </g>
+    <ellipse cx="120" cy="470" rx="8" ry="30" fill="#ffffff" opacity=".08"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Balgat · her gün 09.00 – 02.00</div>
+    <h1>Bir nargile, bir sohbet, bir gece daha.</h1>
+    <p class="lead">Balgat'ın ortasında sakin bir köşe. Sabah kahvaltısından gece son nargileye kadar, sofran ve köz hep hazır.</p>
+    <div class="cta"><a class="btn pri" href="#kampanya">4 biriktir, 5. bizden →</a><a class="btn gh" href="#menu">Menüyü gör</a></div>
+    <div class="bilgi"><span><b>Adres</b> Süleyman Hacıabdullahoğlu Cd. No: 8A, Balgat, Çankaya</span><span><b>Telefon</b> 0534 881 20 29</span></div>
+  </div>
+</header>
+
+<main>
+<section id="kampanya" class="kamp"><div class="wrap kgrid">
+  <div>
+    <div class="eyebrow">Nargile biriktir</div>
+    <h2>4 nargile biriktir, 5.'si bizden.</h2>
+    <p class="lead">İçtiğin her nargile kartına işlenir. Toplam 4 nargileye ulaştığında 5. nargilen bizden. İster aynı gün iç, ister başka bir akşam gel.</p>
+    <div class="damga" aria-label="Damga kartı: 4 nargile biriktir, 5. ikram">
+      <span class="d dolu">1</span><span class="d dolu">2</span><span class="d dolu">3</span><span class="d dolu">4</span><span class="d ikram">İKRAM</span>
+    </div>
+    <div class="damga-alt"><span>Farklı günlerde birikir</span><span>5. nargile bizden</span></div>
+  </div>
+  <div class="kart">
+    <h3 style="margin:0;font-size:20px">Nasıl yararlanırım?</h3>
+    <ol>
+      <li>Nargile söylerken kasada telefon numaranı söyle.</li>
+      <li>Her nargilen kartına 1 damga olarak işlenir.</li>
+      <li>4 damga dolunca 5. nargileni istediğin gün iç.</li>
+    </ol>
+    <div class="cta" style="margin-top:18px"><a class="btn pri" href="https://wa.me/905348812029?text=Merhaba%2C%20nargile%20biriktirme%20kampanyas%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20ve%20masa%20ay%C4%B1rtmak%20istiyorum." target="_blank" rel="noopener">Masa ayırt, biriktirmeye başla</a></div>
+    <p class="kosul">Damgalar farklı günlerde birikebilir. İkram nargile klasik tütündür. Bir'e bir ve kadınlara özel promosyonlarla birlikte kullanılmaz.</p>
+  </div>
+<div class="wrap" style="grid-column:1/-1">
+  <div class="seviye">
+    <div><b>Kıvılcım</b><p>İlk nargilende kartın açılır. Her nargile 1 damga.</p></div>
+    <div><b>Köz</b><p>4 damga dolunca 5. nargile bizden. Kart yeniden başlar.</p></div>
+    <div><b>Kartını gör</b><p>Kaç damgan kaldığını kasada sor, numaran yeter.</p></div>
+  </div></div>
+</div></section>
+
+<section id="one"><div class="wrap">
+  <div class="eyebrow">Mutfaktan</div>
+  <h2>Nargilenin yanına</h2>
+  <div class="one">
+    <div><h3>Fumar Burger</h3><p>130 gram köfteli imza burger</p><b>560 ₺</b></div>
+    <div><h3>Sac Kavurma</h3><p>Kırmızı etlerin en çok söyleneni</p><b>800 ₺</b></div>
+    <div><h3>Fumar Serpme Kahvaltı</h3><p>Sabahları, kalabalık sofralara</p><b>1.500 ₺</b></div>
+    <div><h3>Kavurmalı Pizza</h3><p>Ortaya söylemelik</p><b>800 ₺</b></div>
+  </div>
+</div></section>
+
+<section id="menu" style="padding-top:20px"><div class="wrap">
+  <div class="eyebrow">Güncel menü</div>
+  <h2>Menü</h2>
+  <div class="tabs" role="tablist" aria-label="Menü bölümleri"><button type="button" class="tab" id="t0" role="tab" aria-selected="true" data-i="0">Nargile</button><button type="button" class="tab" id="t1" role="tab" aria-selected="false" data-i="1">Mutfak</button><button type="button" class="tab" id="t2" role="tab" aria-selected="false" data-i="2">Tatlı &amp; Meyve</button><button type="button" class="tab" id="t3" role="tab" aria-selected="false" data-i="3">İçecekler</button></div>
+  <div class="panel" id="p0" role="tabpanel"><div class="kat"><h4>NARGİLE ÇEŞİTLERİ</h4><ul><li><span>KLASİK</span><i></i><b>500 ₺</b></li><li><span>PREMİUM</span><i></i><b>650 ₺</b></li><li><span>RUS</span><i></i><b>800 ₺</b></li><li><span>BONCHE</span><i></i><b>990 ₺</b></li><li><span>ALMAN</span><i></i><b>750 ₺</b></li><li><span>AMERİKAN</span><i></i><b>900 ₺</b></li><li><span>DR REÇETESİ</span><i></i><b>1.100 ₺</b></li></ul></div><div class="kat"><h4>BİR&#x27;E BİR PROMOSYON</h4><ul><li><span>BİR&#x27;E BİR KLASİK (PROMOSYON)</span><i></i><b>750 ₺</b></li><li><span>BİR&#x27;E BİR ALMAN (PROMOSYON)</span><i></i><b>990 ₺</b></li><li><span>BİR&#x27;E BİR PREMİUM (PROMOSYON)</span><i></i><b>950 ₺</b></li><li><span>BİR&#x27;E BİR RUS (PROMOSYON)</span><i></i><b>1.100 ₺</b></li></ul></div><div class="kat"><h4>KADIN MÜŞTERİLERİMİZE ÖZEL</h4><ul><li><span>KADINLARA ÖZEL ALMAN NARGİLE</span><i></i><b>500 ₺</b></li><li><span>KADINLARA ÖZEL DARK NARGİLE</span><i></i><b>500 ₺</b></li><li><span>KADINLARA ÖZEL KLASİK NARGİLE</span><i></i><b>300 ₺</b></li></ul></div><div class="kat"><h4>DİĞER NARGİLE ÜRÜNLERİ</h4><ul><li><span>KULLAN AT</span><i></i><b>50 ₺</b></li><li><span>LÜLE (Ekstra)</span><i></i><b>350 ₺</b></li><li><span>PREMİUM LÜLE (Ekstra)</span><i></i><b>500 ₺</b></li><li><span>DARK LÜLE (Ekstra)</span><i></i><b>500 ₺</b></li><li><span>X-KAH (Elektronik lüle)</span><i></i><b>1.000 ₺</b></li><li><span>ELEKTRONİK NARGİLE</span><i></i><b>800 ₺</b></li><li><span>PANADA-BOBY</span><i></i><b>900 ₺</b></li><li><span>QUASAR</span><i></i><b>800 ₺</b></li></ul></div></div><div class="panel" id="p1" role="tabpanel" hidden><div class="kat"><h4>KAHVALTILAR</h4><ul><li><span>FUMAR SERPME KAHVALTI</span><i></i><b>1.500 ₺</b></li><li><span>FUMAR SPECİAL KAHVALTI</span><i></i><b>700 ₺</b></li><li><span>GÜNÜN ÇORBASI</span><i></i><b>400 ₺</b></li></ul></div><div class="kat"><h4>BURGERLER</h4><ul><li><span>FUMARBURGER</span><i></i><b>560 ₺</b></li><li><span>HOMEMADE CHEESEBURGER</span><i></i><b>510 ₺</b></li><li><span>MEXICAN BURGER</span><i></i><b>490 ₺</b></li><li><span>HOMEMADE BURGER</span><i></i><b>510 ₺</b></li><li><span>DOUBLE BURGER</span><i></i><b>670 ₺</b></li></ul></div><div class="kat"><h4>KIRMIZI ETLER</h4><ul><li><span>PİLAV ÜSTÜ KAVURMA</span><i></i><b>800 ₺</b></li><li><span>SAC KAVURMA</span><i></i><b>800 ₺</b></li><li><span>BODRUM ÇÖKERTME</span><i></i><b>750 ₺</b></li><li><span>KASAP KÖFTE</span><i></i><b>650 ₺</b></li><li><span>DANA KÜLBASTI</span><i></i><b>750 ₺</b></li><li><span>ANTRİKOT</span><i></i><b>800 ₺</b></li><li><span>BEEF STROGANOFF</span><i></i><b>770 ₺</b></li><li><span>SPORCU ET HAŞLAMA</span><i></i><b>720 ₺</b></li></ul></div><div class="kat"><h4>BEYAZ ETLER</h4><ul><li><span>BBQ SOSLU TAVUK</span><i></i><b>540 ₺</b></li><li><span>FUMAR SCHNİTZEL</span><i></i><b>550 ₺</b></li><li><span>KÖRİ SOSLU TAVUK</span><i></i><b>540 ₺</b></li><li><span>MEXİCAN TAVUK</span><i></i><b>540 ₺</b></li><li><span>PİLAV ÜSTÜ TAVUK</span><i></i><b>600 ₺</b></li><li><span>SPORCU TAVUK HAŞLAMA</span><i></i><b>550 ₺</b></li><li><span>TAVUK ÇÖKERTME</span><i></i><b>600 ₺</b></li><li><span>TAVUK KÜLBASTI</span><i></i><b>540 ₺</b></li><li><span>TAVUK SAC KAVURMA</span><i></i><b>600 ₺</b></li><li><span>TAVUK STROGANOFF</span><i></i><b>550 ₺</b></li></ul></div><div class="kat"><h4>PİZZALAR</h4><ul><li><span>KAVURMALI PİZZA</span><i></i><b>800 ₺</b></li><li><span>TAC MAHAL</span><i></i><b>600 ₺</b></li><li><span>3 PEYNİRLİ</span><i></i><b>550 ₺</b></li><li><span>FUMAR KARIŞIK PİZZA</span><i></i><b>650 ₺</b></li><li><span>MANTARLI PİZZA</span><i></i><b>550 ₺</b></li><li><span>MARGARİTA PİZZA</span><i></i><b>550 ₺</b></li><li><span>PİZZA QUATRO</span><i></i><b>640 ₺</b></li><li><span>TON BALIKLI PİZZA</span><i></i><b>650 ₺</b></li></ul></div><div class="kat"><h4>MAKARNALAR</h4><ul><li><span>ANAM BABAM USULÜ</span><i></i><b>450 ₺</b></li><li><span>BİFTEKLİ PENNE</span><i></i><b>480 ₺</b></li><li><span>FETTUCINI ALFREDO</span><i></i><b>450 ₺</b></li><li><span>KAYSERİ MANTISI</span><i></i><b>580 ₺</b></li><li><span>PENNE ARABİATA</span><i></i><b>450 ₺</b></li><li><span>SPAGETTİ BOLONEZ</span><i></i><b>450 ₺</b></li><li><span>SPAGETTİ NAPOLİTEN</span><i></i><b>450 ₺</b></li></ul></div><div class="kat"><h4>APERATİFLER</h4><ul><li><span>ÇITIR TAVUK SEPETİ</span><i></i><b>510 ₺</b></li><li><span>ELMA DİLİMLİ PATATES</span><i></i><b>350 ₺</b></li><li><span>FUMAR SPECİAL COMBO SEPETİ</span><i></i><b>600 ₺</b></li><li><span>PATATES TAVA</span><i></i><b>350 ₺</b></li><li><span>SİGARA BÖREĞİ</span><i></i><b>350 ₺</b></li><li><span>SOĞAN HALKASI</span><i></i><b>350 ₺</b></li></ul></div><div class="kat"><h4>WRAPLER</h4><ul><li><span>BBQ TAVUK WRAP</span><i></i><b>460 ₺</b></li><li><span>CHİCKEN WRAP</span><i></i><b>430 ₺</b></li><li><span>EKMEK ARASI KÖFTE</span><i></i><b>550 ₺</b></li><li><span>KÖFTE WRAP</span><i></i><b>560 ₺</b></li><li><span>STEAK WRAP</span><i></i><b>660 ₺</b></li></ul></div><div class="kat"><h4>QUESADILLA</h4><ul><li><span>ETLİ QUESADILLA</span><i></i><b>640 ₺</b></li><li><span>TAVUKLU QUESADILLA</span><i></i><b>550 ₺</b></li></ul></div><div class="kat"><h4>SALATALAR</h4><ul><li><span>BADEMLİ ILIK TAVUK SALATA</span><i></i><b>550 ₺</b></li><li><span>ÇOBAN SALATA</span><i></i><b>400 ₺</b></li><li><span>SÖĞÜŞ</span><i></i><b>250 ₺</b></li><li><span>STEAK SALATA</span><i></i><b>600 ₺</b></li><li><span>TAVUKLU SEZAR SALATA</span><i></i><b>560 ₺</b></li><li><span>TONBALIKLI SALATA</span><i></i><b>580 ₺</b></li></ul></div><div class="kat"><h4>SANDVİÇLER</h4><ul><li><span>BEYAZ PEYNİR DOMATES SANDVİÇ</span><i></i><b>350 ₺</b></li><li><span>CLUB SANDVİÇ</span><i></i><b>450 ₺</b></li><li><span>SOĞUK SANDVİÇ</span><i></i><b>400 ₺</b></li><li><span>TON BALIKLI SANDVİÇ</span><i></i><b>470 ₺</b></li></ul></div><div class="kat"><h4>TOSTLAR</h4><ul><li><span>B.PEY.DOM.BAZLAMA TOST</span><i></i><b>320 ₺</b></li><li><span>B.PEY.DOM.TOST</span><i></i><b>280 ₺</b></li><li><span>FUMAR SANAYİ TOSTU</span><i></i><b>430 ₺</b></li><li><span>KARIŞIK BAZLAMA TOST</span><i></i><b>360 ₺</b></li><li><span>KARIŞIK TOST</span><i></i><b>320 ₺</b></li><li><span>KAŞARLI BAZLAMA TOST</span><i></i><b>320 ₺</b></li><li><span>KAŞARLI SUCUKLU TOST</span><i></i><b>330 ₺</b></li><li><span>KAŞARLI TOST</span><i></i><b>280 ₺</b></li><li><span>KAV.KAŞAR BAZLAMA TOST</span><i></i><b>480 ₺</b></li></ul></div><div class="kat"><h4>GÖZLEMELER</h4><ul><li><span>BEYAZ PEYNİRLİ MAYDANOZLU GÖZLEME</span><i></i><b>300 ₺</b></li><li><span>KAŞARLI GÖZLEME</span><i></i><b>300 ₺</b></li><li><span>KIYMA KAŞAR GÖZLEME</span><i></i><b>340 ₺</b></li><li><span>PATATES KAŞAR GÖZLEME</span><i></i><b>310 ₺</b></li></ul></div><div class="kat"><h4>MENEMEN</h4><ul><li><span>KAŞARLI MENEMEN</span><i></i><b>330 ₺</b></li><li><span>KIYMALI MENEMEN</span><i></i><b>390 ₺</b></li><li><span>SADE MENEMEN</span><i></i><b>350 ₺</b></li><li><span>SUCUKLU MENEMEN</span><i></i><b>380 ₺</b></li></ul></div><div class="kat"><h4>OMLETLER</h4><ul><li><span>ETÇİL OMLET</span><i></i><b>350 ₺</b></li><li><span>KAŞARLI-MANTARLI OMLET</span><i></i><b>300 ₺</b></li><li><span>OMLET KAŞARLI</span><i></i><b>320 ₺</b></li><li><span>OMLET SADE</span><i></i><b>300 ₺</b></li><li><span>OMLET SUCUKLU</span><i></i><b>320 ₺</b></li><li><span>VEJETERYAN OMLET</span><i></i><b>300 ₺</b></li></ul></div><div class="kat"><h4>SAHANDA YUMURTA</h4><ul><li><span>KAVURMALI YUMURTA</span><i></i><b>440 ₺</b></li><li><span>KIYMALI YUMURTA</span><i></i><b>350 ₺</b></li><li><span>SUCUKLU YUMURTA</span><i></i><b>280 ₺</b></li><li><span>YUMURTA</span><i></i><b>220 ₺</b></li></ul></div></div><div class="panel" id="p2" role="tabpanel" hidden><div class="kat"><h4>TATLILAR</h4><ul><li><span>ANTEP FISTIKLI FRAMBUAZLI PASTA</span><i></i><b>450 ₺</b></li><li><span>CEVİZLİ SÜTLAÇ</span><i></i><b>420 ₺</b></li><li><span>ÇİKOLATALI ORMAN MEYVELİ PASTA</span><i></i><b>450 ₺</b></li><li><span>ÇİLEKLİ CREAM PUFF</span><i></i><b>450 ₺</b></li><li><span>COCONUT MANGO PASTA</span><i></i><b>450 ₺</b></li><li><span>COFFEE BEAN</span><i></i><b>450 ₺</b></li><li><span>DOUBLE ÇİKOLATALI PASTA</span><i></i><b>450 ₺</b></li><li><span>FİLE BADEMLİ SÜTLAÇ</span><i></i><b>420 ₺</b></li><li><span>FINDIKLI SÜTLAÇ</span><i></i><b>390 ₺</b></li><li><span>FISTIKLI SÜTLAÇ</span><i></i><b>450 ₺</b></li><li><span>LEMON PASTA</span><i></i><b>450 ₺</b></li><li><span>LİMONLU CREAM PUFF</span><i></i><b>450 ₺</b></li><li><span>MANGO DREAM</span><i></i><b>450 ₺</b></li><li><span>MUZLU CREAM PUFF</span><i></i><b>450 ₺</b></li><li><span>PISTACHIO</span><i></i><b>450 ₺</b></li><li><span>RAFFALUNE</span><i></i><b>450 ₺</b></li><li><span>STRAWBERRY</span><i></i><b>450 ₺</b></li><li><span>SUFLE</span><i></i><b>450 ₺</b></li><li><span>VELVET PASTA</span><i></i><b>450 ₺</b></li><li><span>WAFFLE</span><i></i><b>500 ₺</b></li><li><span>WHITE LADY PASTA</span><i></i><b>450 ₺</b></li><li><span>MAGNOLİA</span><i></i><b>350 ₺</b></li><li><span>SÜTLAÇ</span><i></i><b>350 ₺</b></li><li><span>DONDURMA 1 TOP</span><i></i><b>100 ₺</b></li></ul></div><div class="kat"><h4>MEYVELER</h4><ul><li><span>KARPUZ TABAĞI</span><i></i><b>600 ₺</b></li><li><span>KAVUN TABAĞI</span><i></i><b>600 ₺</b></li><li><span>MEYVE TABAĞI</span><i></i><b>1.100 ₺</b></li></ul></div><div class="kat"><h4>ÇEREZLER</h4><ul><li><span>KAJU</span><i></i><b>700 ₺</b></li><li><span>MISIR</span><i></i><b>250 ₺</b></li><li><span>ANTEP FISTIĞI</span><i></i><b>700 ₺</b></li><li><span>FINDIK</span><i></i><b>500 ₺</b></li><li><span>KARIŞIK KURUYEMİŞ</span><i></i><b>600 ₺</b></li></ul></div></div><div class="panel" id="p3" role="tabpanel" hidden><div class="kat"><h4>KAHVE ÇEŞİTLERİ</h4><ul><li><span>ESPRESSO</span><i></i><b>200 ₺</b></li><li><span>MACCHIATO</span><i></i><b>200 ₺</b></li><li><span>TÜRK KAHVESİ</span><i></i><b>200 ₺</b></li><li><span>DAMLA SAKIZLI KAHVE</span><i></i><b>250 ₺</b></li><li><span>DİBEK KAHVESİ</span><i></i><b>250 ₺</b></li><li><span>MENENGİÇ KAHVESİ</span><i></i><b>300 ₺</b></li><li><span>NESCAFE GOLD</span><i></i><b>200 ₺</b></li><li><span>AMERICANO</span><i></i><b>200 ₺</b></li><li><span>FİLTRE KAHVE</span><i></i><b>200 ₺</b></li><li><span>CAPPUCCINO</span><i></i><b>200 ₺</b></li><li><span>SAHLEP</span><i></i><b>300 ₺</b></li><li><span>SICAK ÇİKOLATA</span><i></i><b>300 ₺</b></li><li><span>SÜTLÜ NESCAFE</span><i></i><b>250 ₺</b></li><li><span>SÜVARİ</span><i></i><b>250 ₺</b></li><li><span>DUBLE TÜRK KAHVESİ</span><i></i><b>350 ₺</b></li><li><span>LATTE</span><i></i><b>300 ₺</b></li><li><span>MOCHA</span><i></i><b>300 ₺</b></li><li><span>AROMALI LATTE</span><i></i><b>310 ₺</b></li><li><span>ESPRESSO MACCHIATO</span><i></i><b>300 ₺</b></li></ul></div><div class="kat"><h4>SOĞUK KAHVELER</h4><ul><li><span>ICE AMERICANO</span><i></i><b>200 ₺</b></li><li><span>ICE LATTE</span><i></i><b>350 ₺</b></li><li><span>ICE MOCHA</span><i></i><b>350 ₺</b></li><li><span>ICE WHITE MOCHA</span><i></i><b>350 ₺</b></li></ul></div><div class="kat"><h4>SICAK İÇECEKLER</h4><ul><li><span>ÇAY KÜÇÜK</span><i></i><b>65 ₺</b></li><li><span>ÇAY FİNCAN</span><i></i><b>100 ₺</b></li><li><span>ÇAY KUPA</span><i></i><b>100 ₺</b></li><li><span>ORALET</span><i></i><b>75 ₺</b></li><li><span>ORALET KUPA</span><i></i><b>100 ₺</b></li><li><span>SÜTLÜ ORALET</span><i></i><b>90 ₺</b></li><li><span>SICAK SÜT</span><i></i><b>200 ₺</b></li><li><span>BALLI SÜT</span><i></i><b>250 ₺</b></li></ul></div><div class="kat"><h4>BİTKİ ÇAYLARI</h4><ul><li><span>ADA ÇAYI</span><i></i><b>300 ₺</b></li><li><span>IHLAMUR</span><i></i><b>300 ₺</b></li><li><span>KIŞ ÇAYI</span><i></i><b>300 ₺</b></li><li><span>NANE LİMON</span><i></i><b>300 ₺</b></li><li><span>PAPATYA ÇAYI</span><i></i><b>300 ₺</b></li><li><span>YEŞİL ÇAY</span><i></i><b>300 ₺</b></li></ul></div><div class="kat"><h4>KOKTEYLLER</h4><ul><li><span>DIAMOND</span><i></i><b>400 ₺</b></li><li><span>BLACK PANTER</span><i></i><b>400 ₺</b></li><li><span>REDLINE KING</span><i></i><b>400 ₺</b></li><li><span>RELAX</span><i></i><b>400 ₺</b></li><li><span>SEX ON THE BEACH</span><i></i><b>400 ₺</b></li><li><span>TROPIC ISLAND</span><i></i><b>400 ₺</b></li><li><span>I.K BIG BOSS</span><i></i><b>500 ₺</b></li><li><span>ICE MIAMI</span><i></i><b>400 ₺</b></li><li><span>ÇİLEKLİ MOJITO</span><i></i><b>350 ₺</b></li><li><span>BLACK BERRY MOJITO</span><i></i><b>350 ₺</b></li><li><span>ELMALI MOJITO</span><i></i><b>350 ₺</b></li><li><span>RUSSIAN MOJITO</span><i></i><b>350 ₺</b></li></ul></div><div class="kat"><h4>LİMONATALAR</h4><ul><li><span>LİMONATA</span><i></i><b>290 ₺</b></li><li><span>ÇİLEKLİ LİMONATA</span><i></i><b>340 ₺</b></li><li><span>NANELİ LİMONATA</span><i></i><b>340 ₺</b></li></ul></div><div class="kat"><h4>TAZE MEYVE SULARI</h4><ul><li><span>PORTAKAL SUYU</span><i></i><b>400 ₺</b></li><li><span>MUZLU SÜT</span><i></i><b>400 ₺</b></li><li><span>NAR SUYU</span><i></i><b>500 ₺</b></li><li><span>ATOM</span><i></i><b>500 ₺</b></li><li><span>FUMAR SPECİAL</span><i></i><b>550 ₺</b></li></ul></div><div class="kat"><h4>MILKSHAKE</h4><ul><li><span>ÇİKOLATALI MİLKSHAKE</span><i></i><b>360 ₺</b></li><li><span>ÇİLEKLİ MİLKSHAKE</span><i></i><b>360 ₺</b></li><li><span>OREOLU MİLKSHAKE</span><i></i><b>360 ₺</b></li><li><span>VANİLYALI MİLKSHAKE</span><i></i><b>360 ₺</b></li></ul></div><div class="kat"><h4>FROZEN</h4><ul><li><span>ÇİKOLATALI FROZEN</span><i></i><b>320 ₺</b></li><li><span>ÇİLEKLİ FROZEN</span><i></i><b>320 ₺</b></li><li><span>ELMALI FROZEN</span><i></i><b>320 ₺</b></li><li><span>KAVUNLU FROZEN</span><i></i><b>320 ₺</b></li><li><span>MANGOLU FROZEN</span><i></i><b>320 ₺</b></li></ul></div><div class="kat"><h4>SOĞUK İÇECEKLER</h4><ul><li><span>SU PLASTİK</span><i></i><b>65 ₺</b></li><li><span>SU CAM</span><i></i><b>80 ₺</b></li><li><span>SODA</span><i></i><b>100 ₺</b></li><li><span>SODA (TIRAŞ LİMONLU)</span><i></i><b>110 ₺</b></li><li><span>SODA MEYVELİ</span><i></i><b>120 ₺</b></li><li><span>AYRAN</span><i></i><b>110 ₺</b></li><li><span>NANELİ AYRAN</span><i></i><b>130 ₺</b></li><li><span>CHURCHILL</span><i></i><b>150 ₺</b></li><li><span>CHURCHILL MEYVELİ</span><i></i><b>150 ₺</b></li><li><span>BOL LİMONLU CHURCHILL</span><i></i><b>160 ₺</b></li><li><span>CHURCHILL SEBZELİ</span><i></i><b>180 ₺</b></li><li><span>SODA-AYRAN</span><i></i><b>150 ₺</b></li><li><span>SCHWEPPES</span><i></i><b>150 ₺</b></li><li><span>FUSE TEA</span><i></i><b>150 ₺</b></li><li><span>COLA</span><i></i><b>150 ₺</b></li><li><span>COLA ZERO</span><i></i><b>150 ₺</b></li><li><span>FANTA</span><i></i><b>150 ₺</b></li><li><span>SPRİTE</span><i></i><b>150 ₺</b></li><li><span>CAPPY</span><i></i><b>150 ₺</b></li><li><span>NİĞDE GAZOZ</span><i></i><b>150 ₺</b></li><li><span>RED BULL</span><i></i><b>250 ₺</b></li></ul></div><div class="kat"><h4>VİP ODA</h4><ul><li><span>VİP ODA (dahil olanlarla)</span><i></i><b>3.000 ₺</b></li></ul></div></div>
+  <p class="not">Fiyatlar Türk lirasıdır, KDV dahildir. Menü ve fiyatlar değişebilir.</p>
+</div></section>
+
+<section id="iletisim" class="ilet"><div class="wrap">
+  <div class="eyebrow">Rezervasyon</div>
+  <h2>Bu akşam masan hazır olsun.</h2>
+  <p class="lead">Kaç kişi geleceğini ve saati yaz, masanı ayıralım. Gelince telefon numaranı söyle, nargilen kartına işlensin.</p>
+  <div class="cta"><a class="btn pri" href="https://wa.me/905348812029?text=Merhaba%2C%20bu%20ak%C5%9Fam%20i%C3%A7in%20masa%20ay%C4%B1rtmak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan masa ayırt</a></div>
+  <p class="tel">Telefon: <span style="user-select:all">0534 881 20 29</span> · Her gün 09.00 – 02.00</p>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Fumar Lounge · Balgat, Ankara</span><span>Instagram: @fumarlounge</span></div></footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="nrg" viewBox="0 0 58 110">
+    <ellipse cx="29" cy="8" rx="10" ry="4" fill="#F0A24E"/>
+    <rect x="22" y="9" width="14" height="8" rx="2" fill="#8C6A55"/>
+    <rect x="27" y="17" width="4" height="40" fill="#C8B4A3"/>
+    <ellipse cx="29" cy="48" rx="12" ry="3" fill="#C8B4A3"/>
+    <path d="M14 70 Q14 58 29 58 Q44 58 44 70 L46 98 Q46 106 29 106 Q12 106 12 98 Z" fill="#3E6A5A"/>
+    <path d="M16 80 Q29 86 42 80" stroke="#8FB79A" stroke-width="2" fill="none"/>
+    <path d="M44 66 Q54 70 52 86" stroke="#C8B4A3" stroke-width="2.5" fill="none"/>
+  </symbol>
+</defs></svg>
+
+<script>
+(function(){
+  const tabs=[...document.querySelectorAll('.tab')];
+  tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);document.getElementById('p'+x.dataset.i).hidden=!on;});}));
+})();
+</script>
+
+</body></html>
