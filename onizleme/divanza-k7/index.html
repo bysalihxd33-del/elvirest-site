@@ -5,16 +5,16 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Manrope:wght@400;500;600;700;800&display=swap">
 <style>
 /* Akşam salonu: lacivert duvar, ceviz ve keten tonları; çizilen koltuk, yanan lambda, uzayan metre. */
-:root{--bg:#141A26;--bg2:#1B2333;--card:#212B3E;--ink:#F4EFE6;--mut:#B9B3A8;--line:#33405A;--ac:#D9A066;--ac2:#B97A45;--keten:#E8DCC8;
---f-d:'Playfair Display',Georgia,serif;--f-b:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:dark}
+:root{--bg:#F7F2EB;--bg2:#EFE6DA;--card:#FFFFFF;--ink:#2B2420;--mut:#6E625A;--line:#E2D6C7;--ac:#9A6A45;--ac2:#7C5236;--keten:#E8DCC8;--sage:#7F9A84;
+--f-d:'Playfair Display',Georgia,serif;--f-b:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:light}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-b);font-size:16px;line-height:1.6}
 .wrap{max-width:1100px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
 nav{position:sticky;top:0;z-index:9;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
 .brand{font-family:var(--f-d);font-size:24px;letter-spacing:.04em;color:var(--ink);text-decoration:none}.brand b{color:var(--ac);font-weight:500}
 .btn{display:inline-block;border-radius:999px;padding:12px 22px;font-weight:700;text-decoration:none;font-size:15px;transition:transform .2s}.btn:hover{transform:translateY(-2px)}
-.pri{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#1b120a;box-shadow:0 12px 30px -12px var(--ac2)}.gh{border:1.5px solid var(--line);color:var(--ink)}
-header{position:relative;overflow:hidden;padding-block:80px 90px;background:radial-gradient(800px 420px at 78% 100%,#D9A06630,transparent 65%),var(--bg)}
+.pri{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;box-shadow:0 12px 30px -12px var(--ac2)}.gh{border:1.5px solid var(--line);color:var(--ink)}
+header{position:relative;overflow:hidden;padding-block:80px 90px;background:radial-gradient(900px 480px at 80% 30%,#FFE7C2,transparent 65%),var(--bg)}
 .hg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:30px;align-items:center}
 @media(max-width:860px){.hg{grid-template-columns:1fr}}
 .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);font-weight:700}
@@ -33,6 +33,13 @@ h2{font-family:var(--f-d);font-weight:500;font-size:clamp(32px,4.4vw,50px);line-
 .metre{transform-box:fill-box;transform-origin:0 50%;transform:scaleX(0);animation:metre 1.4s ease 4s forwards}
 @keyframes metre{to{transform:scaleX(1)}}
 .olcu{opacity:0;animation:yan .5s ease 5.3s forwards}
+.huzme{opacity:0;animation:huzme 6s ease-in-out 1s infinite}@keyframes huzme{0%,100%{opacity:.18}50%{opacity:.38}}
+.toz circle{animation:toz 6s ease-in-out infinite}.toz circle:nth-child(2){animation-delay:1.2s}.toz circle:nth-child(3){animation-delay:2.4s}.toz circle:nth-child(4){animation-delay:3.6s}.toz circle:nth-child(5){animation-delay:4.8s}
+@keyframes toz{0%{transform:translate(0,0);opacity:0}30%{opacity:1}100%{transform:translate(18px,-40px);opacity:0}}
+.hali{transform-box:fill-box;transform-origin:0 50%;transform:scaleX(0);animation:metre 1.2s ease .3s forwards}
+.yaprak{transform-box:fill-box;transform-origin:50% 100%;animation:salin 4s ease-in-out infinite}.y2{animation-delay:.8s}.y3{animation-delay:1.6s}
+@keyframes salin{50%{transform:rotate(4deg)}}
+.pencere{opacity:0;animation:yan 1s ease .2s forwards}
 section{padding-block:76px;scroll-margin-top:70px}
 .alt{background:var(--bg2);border-block:1px solid var(--line)}
 .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:30px}
@@ -43,7 +50,7 @@ section{padding-block:76px;scroll-margin-top:70px}
 .adim div{counter-increment:a;border-top:2px solid var(--ac);padding-top:14px}
 .adim div::before{content:counter(a);font-family:var(--f-d);font-size:40px;color:var(--ac)}
 .adim p{color:var(--mut);margin:0}
-.dm{text-align:center;background:radial-gradient(700px 300px at 50% 120%,#D9A06633,transparent 70%),var(--bg2)}
+.dm{text-align:center;background:radial-gradient(700px 300px at 50% 120%,#FFE1B866,transparent 70%),var(--bg2)}
 .dm .lead{margin-inline:auto}.dm .cta{justify-content:center}
 footer{padding-block:24px;color:var(--mut);font-size:13px;border-top:1px solid var(--line)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
@@ -60,9 +67,14 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   </div>
   <svg class="salon" viewBox="0 0 560 380" aria-hidden="true">
     <defs><radialGradient id="lamba" cx=".5" cy=".3" r=".6"><stop offset="0" stop-color="#FFD9A0" stop-opacity=".55"/><stop offset="1" stop-color="#FFD9A0" stop-opacity="0"/></radialGradient></defs>
+    <g class="pencere"><rect x="250" y="20" width="130" height="120" rx="6" fill="#FFF8EC" stroke="#CDBFAE" stroke-width="3"/><path d="M315 20 V140 M250 80 H380" stroke="#CDBFAE" stroke-width="3"/></g>
+    <path class="huzme" d="M255 140 L380 140 L330 306 L150 306 Z" fill="#FFE2A8"/>
+    <g class="toz"><circle cx="230" cy="220" r="2.2" fill="#E6B979"/><circle cx="270" cy="250" r="1.6" fill="#E6B979"/><circle cx="300" cy="190" r="1.8" fill="#E6B979"/><circle cx="250" cy="170" r="1.4" fill="#E6B979"/><circle cx="320" cy="240" r="2" fill="#E6B979"/></g>
+    <ellipse class="hali" cx="220" cy="318" rx="210" ry="14" fill="#C9A98A"/>
+    <g class="bitki" transform="translate(16 236)"><rect x="0" y="40" width="34" height="32" rx="6" fill="#9A6A45"/><path class="yaprak" d="M17 40 Q2 10 8 -10 Q20 12 17 40" fill="#7F9A84"/><path class="yaprak y2" d="M17 40 Q34 8 30 -16 Q16 10 17 40" fill="#6C8A72"/><path class="yaprak y3" d="M17 40 Q14 0 18 -28 Q24 6 17 40" fill="#8FB19A"/></g>
     <circle class="isik" cx="470" cy="110" r="105" fill="url(#lamba)"/>
     <!-- lamba -->
-    <path class="ciz" d="M470 300 L470 120 M440 120 L500 120 L485 80 L455 80 Z M450 300 L490 300" stroke="#E8DCC8" stroke-width="3" fill="none"/>
+    <path class="ciz" d="M470 300 L470 120 M440 120 L500 120 L485 80 L455 80 Z M450 300 L490 300" stroke="#2B2420" stroke-width="3" fill="none"/>
     <path class="isik" d="M440 120 L500 120 L485 80 L455 80 Z" fill="#FFD9A0"/>
     <!-- koltuk dolgu -->
     <g class="dolgu">
@@ -72,14 +84,14 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       <rect x="354" y="200" width="46" height="90" rx="16" fill="#344766"/>
     </g>
     <!-- koltuk çizgi -->
-    <path class="ciz" d="M60 240 L60 188 Q60 170 78 170 L362 170 Q380 170 380 188 L380 240 M40 290 L40 216 Q40 200 63 200 Q86 200 86 216 L86 290 Z M354 290 L354 216 Q354 200 377 200 Q400 200 400 216 L400 290 Z M86 280 L354 280 M86 248 L354 248 M220 248 L220 280 M70 290 L70 306 M370 290 L370 306" stroke="#E8DCC8" stroke-width="3" fill="none" stroke-linejoin="round"/>
+    <path class="ciz" d="M60 240 L60 188 Q60 170 78 170 L362 170 Q380 170 380 188 L380 240 M40 290 L40 216 Q40 200 63 200 Q86 200 86 216 L86 290 Z M354 290 L354 216 Q354 200 377 200 Q400 200 400 216 L400 290 Z M86 280 L354 280 M86 248 L354 248 M220 248 L220 280 M70 290 L70 306 M370 290 L370 306" stroke="#2B2420" stroke-width="3" fill="none" stroke-linejoin="round"/>
     <rect class="yastik y1" x="100" y="190" width="70" height="52" rx="14" fill="#D9A066"/>
     <rect class="yastik y2" x="270" y="190" width="70" height="52" rx="14" fill="#E8DCC8"/>
     <!-- metre -->
     <g transform="translate(40 330)"><rect class="metre" x="0" y="0" width="360" height="16" rx="3" fill="#E9C46A"/>
       <g class="olcu"><path d="M0 0 v16 M60 0 v8 M120 0 v8 M180 0 v10 M240 0 v8 M300 0 v8 M360 0 v16" stroke="#1b120a" stroke-width="2"/>
-      <text x="180" y="40" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="20" fill="#E9C46A">330 cm · 3 model hazır</text></g></g>
-    <path class="ciz" d="M0 306 L560 306" stroke="#33405A" stroke-width="2"/>
+      <text x="180" y="40" text-anchor="middle" font-family="Manrope,sans-serif" font-weight="800" font-size="20" fill="#7C5236">330 cm · 3 model hazır</text></g></g>
+    <path class="ciz" d="M0 306 L560 306" stroke="#CDBFAE" stroke-width="2"/>
   </svg>
 </div></header>
 
