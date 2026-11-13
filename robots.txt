@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
-Sitemap: https://elvirest.com/sitemap.xml
 Disallow: /onizleme/
+
+Sitemap: https://elvirest.com/sitemap.xml
