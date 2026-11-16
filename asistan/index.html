@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><title>Dijital Asistan Demosu · Elvirest</title>
+<link rel="icon" href="/favicon.svg">
+<style>
+:root{--bg:#0e1013;--c:#171a20;--t:#eceef2;--m:#98a0ad;--a:#c8a46a;--me:#2b6b4f}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--t);display:flex;justify-content:center}
+.app{width:100%;max-width:520px;height:100%;display:flex;flex-direction:column}
+header{padding:14px 16px;border-bottom:1px solid #252932;display:flex;gap:12px;align-items:center;background:var(--c)}
+.av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#c8a46a,#7a5c2e);display:grid;place-items:center;font-weight:700;color:#111}
+.n{font-weight:600}.s{font-size:12px;color:#5fc48d}
+.bar{font-size:12px;color:var(--m);padding:8px 16px;background:#13161b;border-bottom:1px solid #252932}
+#log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:8px}
+.b{max-width:82%;padding:9px 12px;border-radius:14px;white-space:pre-wrap;word-wrap:break-word}
+.bot{background:var(--c);align-self:flex-start;border-bottom-left-radius:4px}
+.me{background:var(--me);align-self:flex-end;border-bottom-right-radius:4px}
+.typing{color:var(--m);font-size:13px;align-self:flex-start}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:0 16px 8px}
+.chips button{flex:none;background:#1d2128;color:var(--t);border:1px solid #2c313b;border-radius:99px;padding:6px 11px;font-size:13px;cursor:pointer}
+form{display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid #252932;background:var(--c)}
+input{flex:1;background:#0f1216;color:var(--t);border:1px solid #2c313b;border-radius:22px;padding:11px 14px;font-size:15px;outline:none}
+form button{background:var(--a);color:#111;border:0;border-radius:22px;padding:0 16px;font-weight:600;cursor:pointer}
+.ft{font-size:11px;color:var(--m);text-align:center;padding:6px}.ft a{color:var(--a)}
+</style></head><body><div class="app">
+<header><div class="av" id="av">K</div><div><div class="n" id="fn">Klinik</div><div class="s">● çevrimiçi · 7/24 cevap</div></div></header>
+<div class="bar">🧪 Bu bir <b>demo</b>dur. Gerçek bir müşteri gibi yazın (istediğiniz dilde). Lütfen gerçek sağlık veya kişisel bilgi yazmayın.</div>
+<div id="log"></div>
+<div class="chips" id="chips"></div>
+<form id="f"><input id="m" placeholder="Mesaj yazın…" autocomplete="off" maxlength="800"><button>Gönder</button></form>
+<div class="ft">Demo: <a href="https://elvirest.com" target="_blank">Elvirest</a> · Instagram & WhatsApp otomatik cevap asistanı</div>
+</div>
+<script>
+var Q=new URLSearchParams(location.search);
+var F=(Q.get('f')||'Örnek Klinik').slice(0,60), S=Q.get('s')||'sac';
+var URL_='https://blackprens.app.n8n.cloud/webhook/elv-klinik-demo';
+var sid;try{sid=sessionStorage.getItem('elvsid')}catch(e){}
+if(!sid){sid='w'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);try{sessionStorage.setItem('elvsid',sid)}catch(e){}}
+var C={sac:['Saç ekimi fiyatı ne kadar?','Hello, I am from Germany, hair transplant price?','مرحبا، كم سعر زراعة الشعر؟','Ekimden sonra ne zaman işe dönerim?'],
+dis:['İmplant fiyatı nedir?','Dişim çok ağrıyor, bugün gelebilir miyim?','Zirkonyum mu lamine mi?','Hello, do you do veneers?'],
+mob:['Köşe koltuk fiyatı ne kadar?','Özel ölçü yapıyor musunuz?','Teslimat kaç gün?','Hello, do you ship abroad?'],
+org:['Nişan organizasyonu fiyatı?','15 Mayıs için müsait misiniz?','Kına için paket var mı?','Kaç kişilik yer var?'],
+lzr:['Lazer epilasyon kaç seans?','Tüm vücut fiyatı ne?','Erkeklere de yapıyor musunuz?','Hello, laser hair removal price?']};
+var hello={sac:'Merhaba! 👋 '+F+' dijital asistanıyım. Saç ekimi ve ücretsiz ön değerlendirme hakkında size nasıl yardımcı olabilirim?',
+dis:'Merhaba! 👋 '+F+' dijital asistanıyım. Tedavi ve randevu konusunda size nasıl yardımcı olabilirim?',
+mob:'Merhaba! 👋 '+F+' dijital asistanıyım. Hangi ürünle ilgileniyorsunuz?',
+org:'Merhaba! 👋 '+F+' dijital asistanıyım. Hangi etkinliği planlıyorsunuz?',
+lzr:'Merhaba! 👋 '+F+' dijital asistanıyım. Hangi işlemle ilgileniyorsunuz?'};
+if(!C[S])S='sac';
+document.getElementById('fn').textContent=F;document.getElementById('av').textContent=F.charAt(0).toUpperCase();
+document.title=F+' · Dijital Asistan Demosu';
+var log=document.getElementById('log');
+function add(t,c){var d=document.createElement('div');d.className='b '+c;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
+add(hello[S],'bot');
+var ch=document.getElementById('chips');C[S].forEach(function(t){var b=document.createElement('button');b.type='button';b.textContent=t;b.onclick=function(){send(t)};ch.appendChild(b)});
+var busy=false;
+function send(t){t=(t||'').trim();if(!t||busy)return;busy=true;add(t,'me');ch.style.display='none';
+var ty=document.createElement('div');ty.className='typing';ty.textContent='yazıyor…';log.appendChild(ty);log.scrollTop=log.scrollHeight;
+fetch(URL_,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({sid:sid,mesaj:t,firma:F,sektor:S})})
+.then(function(r){return r.json()}).then(function(j){ty.remove();add(j.cevap||'…','bot')})
+.catch(function(){ty.remove();add('Bağlantı sorunu oldu, lütfen tekrar deneyin.','bot')})
+.finally(function(){busy=false});}
+document.getElementById('f').onsubmit=function(e){e.preventDefault();var i=document.getElementById('m');send(i.value);i.value=''};
+</script></body></html>
