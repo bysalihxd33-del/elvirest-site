@@ -19,7 +19,8 @@ window.C=async function(i,J){const S=(await fetch(R+(J||'b1.json')).then(r=>r.js
  document.querySelectorAll('input[name=whoMade]')[0]?.click(); document.querySelectorAll('input[name=isSupply]')[0]?.click();
  const tg=document.querySelector('#listing-tags-input'); const add=[...tg.closest('div').parentElement.querySelectorAll('button')].find(b=>b.textContent.trim()==='Add');
  for(const t of S.tags.filter(t=>t.length<=20)){Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(tg,t); tg.dispatchEvent(new Event('input',{bubbles:true})); await SL(300); add.click(); await SL(700);}
- await SL(2500); const n=document.querySelectorAll('button[aria-label^="Delete tag "]').length; const ok=document.body.innerText.includes(S.file);
+ await SL(1500); for(let pass=0;pass<2;pass++){const have=[...document.querySelectorAll('button[aria-label^="Delete tag "]')].map(b=>b.getAttribute('aria-label').slice(11)); for(const t of S.tags.filter(t=>t.length<=20&&!have.includes(t))){Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(tg,t); tg.dispatchEvent(new Event('input',{bubbles:true})); await SL(400); add.click(); await SL(1000);}}
+ await SL(1500); const n=document.querySelectorAll('button[aria-label^="Delete tag "]').length; const ok=document.body.innerText.includes(S.file);
  if(n>=12&&ok){[...document.querySelectorAll('button')].filter(b=>b.textContent.trim()==='Publish').at(-1).click(); await SL(3000); const d=[...document.querySelectorAll('[role=dialog] button')].filter(b=>b.textContent.trim()==='Publish'); d.at(-1)?.click(); await SL(5000);}
  return [S.id,n,ok,location.href];};
 
