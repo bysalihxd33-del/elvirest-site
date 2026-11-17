@@ -1,7 +1,7 @@
 window.R='https://raw.githubusercontent.com/bysalihxd33-del/elvirest-site/tmp-nk-q7z/';
 window.SL=ms=>new Promise(r=>setTimeout(r,ms));
 const U='https://d8j0ntlcm91z4.cloudfront.net/user_3JQfT48ldCNuzZzIhr2ccF3AAse/hf_2026111';
-window.BG={wood:U+'7_064442_f168d884-fcc5-4b0a-9a75-420c884184af.png',marble:U+'7_064442_3b1beb41-8b50-4646-a6d6-58428833f653.png',nye:U+'7_064525_c9273abf-db3a-49cb-97cc-42b041e1d30b.png',love:U+'7_064525_31bdf81a-a5ec-4842-aa65-7c37a9ce2fc7.png',baby:U+'7_064442_2269edc7-561f-4f68-8b04-c1f59260b2b6.png',kids:U+'7_064604_7c23070f-6aed-470f-9317-47bfada77871.png',bridal:window.BRIDAL||U+'7_064442_2269edc7-561f-4f68-8b04-c1f59260b2b6.png'};
+window.BG={wood:U+'7_064442_f168d884-fcc5-4b0a-9a75-420c884184af.png',marble:U+'7_064442_3b1beb41-8b50-4646-a6d6-58428833f653.png',nye:U+'7_064525_c9273abf-db3a-49cb-97cc-42b041e1d30b.png',love:U+'7_064525_31bdf81a-a5ec-4842-aa65-7c37a9ce2fc7.png',baby:U+'7_064442_2269edc7-561f-4f68-8b04-c1f59260b2b6.png',kids:U+'7_064604_7c23070f-6aed-470f-9317-47bfada77871.png',bridal:U+'7_064657_0a7cc8aa-51aa-452b-89d8-b1ba065e5684.png'};
 const img=src=>new Promise((ok,no)=>{const i=new Image(); i.crossOrigin='anonymous'; i.onload=()=>ok(i); i.onerror=no; i.src=src;});
 function rr(x,a,b,w,h,r){x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath();}
 window.COVER=async function(pid,bgk,title,sub,dark){
