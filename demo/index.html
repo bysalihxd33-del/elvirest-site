@@ -9,7 +9,7 @@ addEventListener('DOMContentLoaded',function(){try{var sid=sessionStorage.getIte
  setTimeout(function(){var i=document.querySelectorAll('input');if(i.length>1){var s=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set;s.call(i[0],'DEMO');i[0].dispatchEvent(new Event('input',{bubbles:true}));s.call(i[1],'demo');i[1].dispatchEvent(new Event('input',{bubbles:true}));var f=i[1].form;if(f&&f.requestSubmit)f.requestSubmit();else{var bt=[...document.querySelectorAll('button')].find(x=>/Giriş/.test(x.textContent));bt&&bt.click()}}},900);});
 })();
 </script><meta name="robots" content="noindex"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Demo · Elvirest · İşletme Yönetim Paneli</title>
+<title>Demo · Elvirest · İşletme Yönetim Paneli</title><link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96"><link rel="icon" href="/favicon-192x192.png" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#0a0f1b">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
