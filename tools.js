@@ -44,3 +44,13 @@ window.C=async function(i){const S=(await fetch(R+'b3.json').then(r=>r.json()))[
  for(let pass=0;pass<2;pass++){const have=[...document.querySelectorAll('button[aria-label^="Delete tag "]')].map(b=>b.getAttribute('aria-label').slice(11)); for(const t of S.tags.filter(t=>t.length<=20&&!have.includes(t))){Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(tg,t); tg.dispatchEvent(new Event('input',{bubbles:true})); await SL(300); add.click(); await SL(800);}}
  return [S.id,nf,document.querySelectorAll('button[aria-label^="Delete tag "]').length];};
 window.PUBN=async function(){[...document.querySelectorAll('button')].filter(b=>b.textContent.trim()==='Publish').at(-1).click(); await SL(3000); [...document.querySelectorAll('[role=dialog] button')].filter(b=>b.textContent.trim()==='Publish').at(-1)?.click(); await SL(5000); return location.href.slice(-25);};
+window.FIX2=async function(pid){
+ const kb=()=>[...document.querySelectorAll('*')].filter(e=>e.childElementCount===0&&/^[\d.]+ kb$/i.test(e.textContent.trim()));
+ const old=kb(); const oldN=old.length;
+ const fi=[...document.querySelectorAll('input[type=file]')].find(x=>x.name!=='listing-media-upload'); if(!fi) return 'nofi';
+ await DFILES(pid,fi); await SL(6000);
+ if(kb().length<=oldN) return ['upload?',oldN,kb().length];
+ for(const el of old){let p=el; for(let i=0;i<3;i++) p=p.parentElement; const b=[...p.querySelectorAll('button')].find(x=>(x.textContent.trim()||x.getAttribute('aria-label'))==='Remove'); b?.click(); await SL(1000);}
+ const left=kb().length;
+ [...document.querySelectorAll('button')].find(b=>b.textContent.trim()==='Publish changes')?.click(); await SL(6000);
+ return [pid,oldN,left,location.href.slice(-10)];};
