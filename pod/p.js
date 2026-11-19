@@ -7,11 +7,11 @@ const tab=[...document.querySelectorAll('button,a,div')].find(b=>b.innerText&&b.
 const rows=()=>[...document.querySelectorAll('tr')].filter(r=>/USD/.test(r.innerText));
 const out=[];
 for(const [re,price] of plan){
-  for(const r of rows()){const cb=r.querySelector('input[type=checkbox]');const sz=r.innerText.trim().split(/\s+/)[1]||r.innerText.trim().split(/\s+/)[0];const want=!re||new RegExp(re).test(sz);if(cb&&cb.checked!==want){cb.click();await W(150);}}
+  for(const r of rows()){const cb=r.querySelector('input[type=checkbox]');const sz=r.innerText.trim().split(/\s+/)[1]||r.innerText.trim().split(/\s+/)[0];const want=!re||new RegExp(re).test(sz);if(cb&&cb.checked!==want){(cb.closest('label')||cb.parentElement).click();await W(300);}}
   const ep=[...document.querySelectorAll('button')].filter(b=>b.innerText.trim()==='Edit price');(ep[ep.length-1]).click();await W(900);
   const pin=[...document.querySelectorAll('input')].find(i=>i.type!=='checkbox'&&i.offsetParent&&i.closest('[role=dialog],.modal,[class*=modal],[class*=dialog]'));
   if(!pin){out.push('noinput');continue;}
-  SETV(pin,String(price));await W(300);[...document.querySelectorAll('button')].find(b=>b.innerText.trim()==='Apply').click();await W(1200);
+  SETV(pin,String(price));await W(300);[...document.querySelectorAll('button')].find(b=>b.innerText.trim()==='Apply').click();await W(2500);
 }
 return rows().map(r=>r.innerText.replace(/\s+/g,' ').match(/^\S+ (\S+).*?USD ([\d.]+) USD ([\d.-]+)/)?.slice(1).join(' ')).concat(out);
 })
