@@ -1,0 +1,6 @@
+<!doctype html><meta charset="utf-8"><title>gonder</title><body>gonderiliyor
+<script>
+(async()=>{const ad=['k1_feed','k2_feed','k3_feed','k4_feed','k1_story','k4_story'];const out={};
+for(const a of ad){const b=await (await fetch(a+'.jpg',{cache:'no-store'})).arrayBuffer();out[a]=b;}
+if(window.opener){window.opener.postMessage({derinReklam:out},'https://adsmanager.facebook.com');document.body.textContent='gonderildi';setTimeout(()=>window.close(),1500);}})();
+</script>
